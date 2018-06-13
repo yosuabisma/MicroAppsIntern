@@ -1,7 +1,6 @@
 <template>
   <div class="game-4">
     <br/><br/>
-
     <div v-if="isPlay1===true&&turn1<=10" class="player-1">
       <div class="spanCornerLeft">
         <h1 class="size20 white"><b>Player</b></h1>
@@ -142,11 +141,10 @@
   </div>
 </template>
 <script>
-  var randomGenerate = Math.floor(Math.random() * Math.floor(10));
   export default {
       data(){
         return{
-          random:randomGenerate,
+          random:Math.floor(Math.random() * Math.floor(10)),
           mod:0,
           count1: 0,
           count2: 0,
@@ -176,7 +174,6 @@
         checkMod(){
           if(this.mod === this.random){
             this.$router.push('/play');
-          }else{
           }
         },
         checkModAndFinish(){
@@ -269,6 +266,7 @@
   .tap1{
     background-color: #4cd964;
     border-radius: 100%;
+    border: 2px solid #fff;
     color:#fff;
     height: 284px;
     width: 284px;
@@ -294,6 +292,7 @@
   .tap2{
     background-color: #007aff;
     border-radius: 100%;
+    border: 2px solid #fff;
     color:#fff;
     height: 284px;
     width: 284px;
@@ -319,6 +318,7 @@
   .tap3{
     background-color: #ff2d55;
     border-radius: 100%;
+    border: 2px solid #fff;
     color:#fff;
     height: 284px;
     width: 284px;
@@ -344,6 +344,7 @@
   .tap4{
     background-color: #ffcc00;
     border-radius: 100%;
+    border: 2px solid #fff;
     color:#fff;
     height: 284px;
     width: 284px;
