@@ -4,7 +4,7 @@
       <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
     </div>
     <div class="title">
-      <h1 class="size72"><b>Ledak.in</b></h1>
+      <h1 class="size72"><b>Tap Battle</b></h1>
       <h1 class="size36"><b>Truth or Dare</b></h1>
     </div>
     <div class="bottomBtn">
@@ -146,5 +146,5 @@
       transform: scale(1);
       background-color: #ff2d55;
     }
-}
+  }
 </style>

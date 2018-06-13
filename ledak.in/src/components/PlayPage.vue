@@ -1,36 +1,82 @@
 <template>
   <div class="play-page">
-    <div class="rules-box">
-      <center><h1 class="size16">Swipe to skip the tutorial <span></span> </h1></center>
-      <h1 class="size72 margin1">Rules</h1>
-      <center><h1 class="size16 margin2">Tap on the circle button</h1></center>
-    </div>
-    <div class="box-tap">
-      <div class="red-circle">
-        <center><h1 class="size72">Tap!</h1></center>
+    <div v-if="nextPlay===false" class="rule-of-game">
+      <div class="rules-box">
+        <center><h1 class="size16"  v-on:click="nextPlay=true;">Tap to skip the tutorial <span></span> </h1></center>
+        <h1 class="size72 margin1">Rules</h1>
+        <center><h1 class="size16 margin2">Tap on the circle button</h1></center>
+      </div>
+      <div class="box-tap">
+        <div class="red-circle">
+          <center><h1 class="size72">Tap!</h1></center>
+        </div>
+      </div>
+      <div class="notes">
+        <center><h1 class="size16">Swipe to end your turn, and move to the next player.</h1></center>
+      </div>
+      <div class="box-tap">
+        <div class="red-circle">
+          <center><h1 class="size72">Tap!</h1></center>
+        </div>
+      </div>
+      <div class="notes">
+        <center><h1 class="size16">Avoid the bomb or you will lose</h1></center>
+      </div>
+      <div class="box-bomb">
+        <h1>Aha !</h1>
+      </div>
+      <div class="notes">
+        <center><font class="spanCornerLeft size16" v-on:click="gotoPage('/')">Home</font><span><font class="spanCornerRight size16" v-on:click="nextPlay=true;">Next</font></span></center>
       </div>
     </div>
-    <div class="notes">
-      <center><h1 class="size16">Swipe to end your turn, and move to the next player.</h1></center>
-    </div>
-    <div class="box-tap">
-      <div class="red-circle">
-        <center><h1 class="size72">Tap!</h1></center>
+    <!--Number of Players-->
+    <div v-if="nextPlay===true" class="numSelect">
+      <center><h1 class="size72 playerIndicator">{{nums}} Players</h1>
+      <br/>
+      <div class="vueslide">
+        <vue-slider v-model="nums"
+        :min="4"
+        :max="8"
+        :dotSize="50"
+        :width="auto"
+        :height="25"
+        :tooltip="false"
+        :sliderStyle="{backgroundColor:'#fff', border: '10px solid #0088ff'}"
+        :processStyle="{backgroundColor:'#0088ff'}"
+        ></vue-slider>
       </div>
-    </div>
-    <div class="notes">
-      <center><h1 class="size16">Avoid the bomb or you will lose</h1></center>
-    </div>
-    <div class="box-bomb">
-      <h1>Aha !</h1>
-    </div>
-    <div class="notes">
-      <center><font class="spanCornerLeft size16" v-on:click="gotoPage('/')">Home</font><span><font class="spanCornerRight size16">Next</font></span></center>
+      <div v-if="nums===4" class="startPlay" v-on:click="gotoPage('/game-4')">
+        <b>Start</b>
+      </div>
+      <div v-if="nums===5" class="startPlay" v-on:click="gotoPage('/game-5')">
+        <b>Start</b>
+      </div>
+      <div v-if="nums===6" class="startPlay" v-on:click="gotoPage('/game-6')">
+        <b>Start</b>
+      </div>
+      <div v-if="nums===7" class="startPlay" v-on:click="gotoPage('/game-7')">
+        <b>Start</b>
+      </div>
+      <div v-if="nums===8" class="startPlay" v-on:click="gotoPage('/game-8')">
+        <b>Start</b>
+      </div>
+      </center>
     </div>
   </div>
 </template>
 <script>
+  /*from https://nightcatsama.github.io/vue-slider-component/example/#QuickStart*/
+  import vueSlider from 'vue-slider-component';
   export default {
+    data(){
+      return{
+        nextPlay:false,
+        nums:4,
+      }
+    },
+    components: {
+      vueSlider
+    },
     methods: {
       gotoPage(route) {
         this.$router.push(route);
@@ -58,11 +104,18 @@
   .spanCornerRight{
     float: right;
   }
-
-  .play-page {
-    /*height: 640px;
-    width: 360px;*/
+  /*Main DIV*/
+  /*.play-page {
+    height: 640px;
+    width: 360px;
   }
+  .rule-of-game {
+    max-height: 640px;
+    overflow: auto;
+  }*/
+
+
+
   .rules-box{
     padding: 30px 30px;
     background-color: #5856ff;
@@ -88,6 +141,60 @@
     background-color: #5856ff;
     color: #fff;
     padding: 30px 30px;
+  }
+
+  /*Select Player*/
+  .playerIndicator{
+    margin-top: 70px;
+  }
+  .numSelect{
+    background-color: #ff2d55;
+    color: #fff;
+    padding: 30px 30px;
+  }
+  .vueslide{
+    margin-top: 190px;
+  }
+
+  /*button play start*/
+  .startPlay{
+    color:#007aff;
+    font-size:48px;
+    background-color: #fff;
+    border-radius:8px;
+    padding: 10px 10px;
+    margin-top: 75px;
+
+    animation-name: stretchPlay;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    /*background: linear-gradient(-60deg, #ff2d55, #ff2d55, #5856ff, #5856ff);
+    background-size: 1000% 1000%;
+    -webkit-animation: Gradient 5s ease infinite;
+    -moz-animation: Gradient 5s ease infinite;
+    animation: Gradient 5s ease infinite;*/
+  }
+  .startPlay:hover{
+    background-color: #fff;
+  }
+
+  @keyframes stretchPlay {
+    0% {
+      transform: scale(.8);
+      background-color: #fff;
+    }
+    50% {
+      background-color: #fff;
+    }
+    100% {
+      transform: scale(1);
+      background-color: #fff;
+    }
   }
 
 </style>
