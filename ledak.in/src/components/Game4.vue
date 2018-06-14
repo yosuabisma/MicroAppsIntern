@@ -1,5 +1,6 @@
 <template>
-  <div class="game-4">
+  <div>
+  <div v-if="isBoom===false" class="game-4">
     <br/><br/>
     <div v-if="isPlay1===true&&turn1<=10" class="player-1">
       <div class="spanCornerLeft">
@@ -20,9 +21,18 @@
       </center>
       <center>
           <br/>
-          <br/>
-          <!--h1 class="size48 green counterAnim">{{count1}} X</h1-->
-          <br/>
+          <!--Start Tag Num of Taps Indicator-->
+          <h1 v-if="count1<=1" class="size28 counterAnim">{{count1}} X Tap</h1>
+          <h1 v-if="count1>1&&count1<=10" class="size28 counterAnim">{{count1}} X Taps</h1>
+          <h1 v-if="count1>10&&count1<=25" class="size28 counterAnim">More Than 10 Taps !</h1>
+          <h1 v-if="count1>25&&count1<=50" class="size28 counterAnim">More Than 25 Taps !!</h1>
+          <h1 v-if="count1>50&&count1<=100" class="size28 counterAnim">More Than 50 Taps !!!</h1>
+          <h1 v-if="count1>100&&count1<=500" class="size48 counterAnim">Crazy !!!!</h1>
+          <h1 v-if="count1>500&&count1<=1000" class="size48 counterAnim">The Craziest !!!!!</h1>
+          <h1 v-if="count1>1000&&count1<=10000" class="size28 counterAnim">You Have Reached More Than 1000 Taps !</h1>
+          <h1 v-if="count1>10000" class="size28 counterAnim">Are You Alright ?</h1>
+          <!-- End Tag Num of Taps Indivator-->
+          <br/><br/>
           <div v-on:click="turn1+=1;isPlay2=true;isPlay1=false;count1=0;">
             <div class="buttonFinishTap" v-on:click="checkMod()">
               <b>Next Player Turn</b>
@@ -50,9 +60,18 @@
       </center>
       <center>
           <br/>
-          <br/>
-          <!--h1 class="size48 green counterAnim">{{count2}} X</h1-->
-          <br/>
+          <!--Start Tag Num of Taps Indicator-->
+          <h1 v-if="count2<=1" class="size28 counterAnim">{{count2}} X Tap</h1>
+          <h1 v-if="count2>1&&count2<=10" class="size28 counterAnim">{{count2}} X Taps</h1>
+          <h1 v-if="count2>10&&count2<=25" class="size28 counterAnim">More Than 10 Taps !</h1>
+          <h1 v-if="count2>25&&count2<=50" class="size28 counterAnim">More Than 25 Taps !!</h1>
+          <h1 v-if="count2>50&&count2<=100" class="size28 counterAnim">More Than 50 Taps !!!</h1>
+          <h1 v-if="count2>100&&count2<=500" class="size48 counterAnim">Crazy !!!!</h1>
+          <h1 v-if="count2>500&&count2<=1000" class="size48 counterAnim">The Craziest !!!!!</h1>
+          <h1 v-if="count2>1000&&count2<=10000" class="size28 counterAnim">You Have Reached More Than 1000 Taps !</h1>
+          <h1 v-if="count2>10000" class="size28 counterAnim">Are You Alright ?</h1>
+          <!-- End Tag Num of Taps Indivator-->
+          <br/><br/>
           <div v-on:click="turn2+=1;isPlay3=true;isPlay2=false;count2=0;">
             <div class="buttonFinishTap" v-on:click="checkMod()">
               <b>Next Player Turn</b>
@@ -80,9 +99,18 @@
       </center>
       <center>
           <br/>
-          <br/>
-          <!--h1 class="size48 green counterAnim">{{count3}} X</h1-->
-          <br/>
+          <!--Start Tag Num of Taps Indicator-->
+          <h1 v-if="count3<=1" class="size28 counterAnim">{{count3}} X Tap</h1>
+          <h1 v-if="count3>1&&count3<=10" class="size28 counterAnim">{{count3}} X Taps</h1>
+          <h1 v-if="count3>10&&count3<=25" class="size28 counterAnim">More Than 10 Taps !</h1>
+          <h1 v-if="count3>25&&count3<=50" class="size28 counterAnim">More Than 25 Taps !!</h1>
+          <h1 v-if="count3>50&&count3<=100" class="size28 counterAnim">More Than 50 Taps !!!</h1>
+          <h1 v-if="count3>100&&count3<=500" class="size48 counterAnim">Crazy !!!!</h1>
+          <h1 v-if="count3>500&&count3<=1000" class="size48 counterAnim">The Craziest !!!!!</h1>
+          <h1 v-if="count3>1000&&count3<=10000" class="size28 counterAnim">You Have Reached More Than 1000 Taps !</h1>
+          <h1 v-if="count3>10000" class="size28 counterAnim">Are You Alright ?</h1>
+          <!-- End Tag Num of Taps Indivator-->
+          <br/><br/>
           <div v-on:click="turn3+=1;isPlay4=true;isPlay3=false;count3=0;">
             <div class="buttonFinishTap" v-on:click="checkMod()">
               <b>Next Player Turn</b>
@@ -110,9 +138,18 @@
       </center>
       <center>
           <br/>
-          <br/>
-          <!--h1 class="size48 green counterAnim">{{count4}} X</h1-->
-          <br/>
+          <!--Start Tag Num of Taps Indicator-->
+          <h1 v-if="count4<=1" class="size28 counterAnim">{{count4}} X Tap</h1>
+          <h1 v-if="count4>1&&count4<=10" class="size28 counterAnim">{{count4}} X Taps</h1>
+          <h1 v-if="count4>10&&count4<=25" class="size28 counterAnim">More Than 10 Taps !</h1>
+          <h1 v-if="count4>25&&count4<=50" class="size28 counterAnim">More Than 25 Taps !!</h1>
+          <h1 v-if="count4>50&&count4<=100" class="size28 counterAnim">More Than 50 Taps !!!</h1>
+          <h1 v-if="count4>100&&count4<=500" class="size48 counterAnim">Crazy !!!!</h1>
+          <h1 v-if="count4>500&&count4<=1000" class="size48 counterAnim">The Craziest !!!!!</h1>
+          <h1 v-if="count4>1000&&count4<=10000" class="size28 counterAnim">You Have Reached More Than 1000 Taps !</h1>
+          <h1 v-if="count4>10000" class="size28 counterAnim">Are You Alright ?</h1>
+          <!-- End Tag Num of Taps Indivator-->
+          <br/><br/>
           <div v-if="turn4<10" v-on:click="turn4+=1;isPlay1=true;isPlay4=false;count4=0;">
             <div class="buttonFinishTap" v-on:click="checkMod()">
               <b>Next Player Turn</b>
@@ -139,6 +176,15 @@
       <h1>Mod Result = {{mod}}</h1>
     </div-->
   </div>
+  <div v-if="isBoom===true" class="boom">
+    <center>
+      <h1 class="size72 aha">AHA !!!</h1>
+      <div class="buttonFinishTap" v-on:click="gotoPage('/truth-or-dare')">
+        <b>Select Truth or Dare</b>
+      </div>
+    </center>
+  </div>
+  </div>
 </template>
 <script>
   export default {
@@ -157,7 +203,8 @@
           isPlay1:true,
           isPlay2:false,
           isPlay3:false,
-          isPlay4:false
+          isPlay4:false,
+          isBoom:false  /*Apakah Ada yang Kalah*/
           //finish1: false
         }
       },
@@ -173,12 +220,16 @@
         },
         checkMod(){
           if(this.mod === this.random){
-            this.$router.push('/play');
+            this.isBoom = true;
+            //this.$router.push('/play');
+          }else{
+            this.mod = 0;
           }
         },
         checkModAndFinish(){
           if(this.mod === this.random){
-            this.$router.push('/play');
+            this.isBoom = true;
+            //this.$router.push('/play');
           }else{
               this.$router.push('/game-over');
             /*GameOver*/
@@ -197,6 +248,9 @@
   .size20{
     font-size: 20px;
   }
+  .size28{
+    font-size: 28px;
+  }
   .size48{
     font-size: 48px;
   }
@@ -214,6 +268,9 @@
   }
   .spanCornerRight{
     float: right;
+  }
+  .size72{
+    font-size: 72px;
   }
   /*main div*/
   .game-4{
@@ -437,4 +494,19 @@
     margin-top: 20px;
   }
 
+  /*Untuk Orang yang Kalah (tap == random)*/
+  .boom{
+    padding: 30px 30px;
+    background: linear-gradient(-30deg, #ff3b30, #ff3b30, #ff9f00, #ff9f00);
+    background-size: 500% 500%;
+    -webkit-animation: Gradient 1s ease infinite;
+    -moz-animation: Gradient 1s ease infinite;
+    animation: Gradient 1s ease infinite;
+    color: #fff;
+    min-height: 640px;
+    min-width: 360px;
+  }
+  .aha{
+    margin-top: 200px;
+  }
 </style>
