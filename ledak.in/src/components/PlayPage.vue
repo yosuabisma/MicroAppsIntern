@@ -2,7 +2,7 @@
   <div class="play-page">
     <div v-if="nextPlay===false" class="rule-of-game">
       <div class="rules-box">
-        <center><h1 class="size24"  v-on:click="nextPlay=true;">Tap to skip the tutorial <span></span> </h1></center>
+        <center><h1 class="size24 skipFont"  v-on:click="nextPlay=true;">Tap to skip the tutorial <span></span> </h1></center>
         <h1 class="size72 margin1">Rules</h1>
         <center><h1 class="size16 margin2">Tap on the circle button</h1></center>
       </div>
@@ -97,6 +97,8 @@
   }
   .size24{
     font-size: 24px;
+  }
+  .skipFont{
     color:yellow;
     animation-name: stretchTapToPlay;
     animation-duration: 0.6s;
