@@ -17,7 +17,7 @@
           </div>
         </center>
         <div class="stabilizerTOD">
-          What was the last thing you searched for on your phone?
+          {{truthList[randomIndexTruth].message}}
         </div>
         <div class="navigationTruthDare">
           <div class="spanCornerLeft">
@@ -35,7 +35,7 @@
           </div>
         </center>
         <div class="stabilizerTOD">
-          Dance with no music for 1 minute.
+          {{dareList[randomIndexDare].message}}
         </div>
         <div class="navigationTruthDare">
           <div class="spanCornerLeft">
@@ -54,7 +54,33 @@
       data(){
         return{
           isTruth:false,
-          isDare:false
+          isDare:false,
+          randomIndexTruth:Math.floor(Math.random() * Math.floor(10)),
+          randomIndexDare:Math.floor(Math.random() * Math.floor(10)),
+          truthList : [
+            {message: 'What was the last thing you searched for on your phone?'},
+            {message: 'Do you still enjoy Spongebob Squarepants?'},
+            {message: 'Have you ever cheated on a test?'},
+            {message: 'Have you had your first kiss?'},
+            {message: 'When was the last time you cleaned your room?'},
+            {message: 'Do you keep a diary/journal?'},
+            {message: 'Have you ever lied to us?'},
+            {message: 'What would you do with USD 1,000?'},
+            {message: 'Are you afraid of the dark?'},
+            {message: 'Have you ever peed in a pool?'} /*10*/
+          ],
+          dareList : [
+            {message: 'Dance with no music for 1 minute.'},
+            {message: 'Attempt to do 10 pushups.'},
+            {message: 'Do your best lion roar.'},
+            {message: 'Prank call your bestfriend.'},
+            {message: 'Make a really silly face and take a selfie.'},
+            {message: 'Take a selfie and post it in Instagram Story'},
+            {message: 'Act like a monkey.'},
+            {message: 'Text someone using only your nose.'},
+            {message: 'Do the chicken dance.'},
+            {message: 'Draw a mustache on yourself without a mirror.'} /*10*/
+          ]
         }
       },
       methods: {
