@@ -36,6 +36,12 @@
     <div v-if="nextPlay===true" class="numSelect">
       <center><h1 class="size72 playerIndicator">{{nums}} Players</h1>
       <br/>
+      <img class="emote" src="./../assets/emotes/smiling.svg" v-if="nums===4">
+      <img class="emote" src="./../assets/emotes/happy.svg" v-if="nums===5">
+      <img class="emote" src="./../assets/emotes/happy-2.svg" v-if="nums===6">
+      <img class="emote" src="./../assets/emotes/happy-4.svg" v-if="nums===7">
+      <img class="emote" src="./../assets/emotes/happy-1.svg" v-if="nums===8">
+      <br/>
       <div class="vueslide">
         <vue-slider v-model="nums"
         :min="4"
@@ -143,9 +149,11 @@
     max-height: 640px;
     overflow: auto;
   }
-
-
-
+  .emote {
+    margin-top: 48px;
+    width: 72px;
+    height: 72px;
+  }
   .rules-box{
     padding: 30px 30px;
     background-color: #5856ff;
