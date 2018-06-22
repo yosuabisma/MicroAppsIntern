@@ -1,6 +1,5 @@
 <template>
   <div>
-    <music></music>
   <div v-if="isBoom===false" class="game-4">
     <br/><br/>
     <div v-if="isPlay1===true&&turn1<=10" class="player-1">
@@ -15,7 +14,7 @@
       <br/><br/>
       <center>
         <div class="stabilizer">
-          <div class="tap1" v-on:click="count1+=1;mod=count1%10;play;">
+          <div class="tap1" v-on:click="count1+=1;mod=count1%10;">
             <h1 class="counterAnim">Tap!</h1>
           </div>
         </div>
@@ -151,13 +150,129 @@
           <h1 v-if="count4>10000" class="size28 counterAnim">Are You Alright ?</h1>
           <!-- End Tag Num of Taps Indivator-->
           <br/><br/>
-          <div v-if="turn4<10" v-on:click="turn4+=1;isPlay1=true;isPlay4=false;count4=0;">
-            <audio ref="audioElm" src="./../assets/misc293.mp3"></audio>
+          <div v-on:click="turn4+=1;isPlay5=true;isPlay4=false;count4=0;">
             <div class="buttonFinishTap" v-on:click="checkMod()">
               <b>Next Player Turn</b>
             </div>
           </div>
-          <div v-if="turn4===10" v-on:click="isPlay4=false;count4=0;">
+      </center>
+    </div>
+
+    <div v-if="isPlay5===true&&turn5<=10" class="player-5">
+      <div class="spanCornerLeft">
+        <h1 class="size20 white"><b>Player</b></h1>
+        <h1>5</h1>
+      </div>
+      <div class="spanCornerRight">
+        <h1 class="size20 white"><b>Turn</b></h1>
+        <h1>{{turn5}}</h1>
+      </div>
+      <br/><br/>
+      <center>
+        <div class="stabilizer">
+          <div class="tap5" v-on:click="count5+=1;mod=count5%10;">
+            <h1 class="counterAnim">Tap!</h1>
+          </div>
+        </div>
+      </center>
+      <center>
+          <br/>
+          <!--Start Tag Num of Taps Indicator-->
+          <h1 v-if="count5<=1" class="size28 counterAnim">{{count5}} X Tap</h1>
+          <h1 v-if="count5>1&&count5<=10" class="size28 counterAnim">{{count5}} X Taps</h1>
+          <h1 v-if="count5>10&&count5<=25" class="size28 counterAnim">More Than 10 Taps !</h1>
+          <h1 v-if="count5>25&&count5<=50" class="size28 counterAnim">More Than 25 Taps !!</h1>
+          <h1 v-if="count5>50&&count5<=100" class="size28 counterAnim">More Than 50 Taps !!!</h1>
+          <h1 v-if="count5>100&&count5<=500" class="size48 counterAnim">Crazy !!!!</h1>
+          <h1 v-if="count5>500&&count5<=1000" class="size48 counterAnim">The Craziest !!!!!</h1>
+          <h1 v-if="count5>1000&&count5<=10000" class="size28 counterAnim">You Have Reached More Than 1000 Taps !</h1>
+          <h1 v-if="count5>10000" class="size28 counterAnim">Are You Alright ?</h1>
+          <!-- End Tag Num of Taps Indivator-->
+          <br/><br/>
+          <div v-on:click="turn5+=1;isPlay6=true;isPlay5=false;count5=0;">
+            <div class="buttonFinishTap" v-on:click="checkMod()">
+              <b>Next Player Turn</b>
+            </div>
+          </div>
+      </center>
+    </div>
+
+    <div v-if="isPlay6===true&&turn6<=10" class="player-6">
+      <div class="spanCornerLeft">
+        <h1 class="size20 white"><b>Player</b></h1>
+        <h1>6</h1>
+      </div>
+      <div class="spanCornerRight">
+        <h1 class="size20 white"><b>Turn</b></h1>
+        <h1>{{turn6}}</h1>
+      </div>
+      <br/><br/>
+      <center>
+        <div class="stabilizer">
+          <div class="tap6" v-on:click="count6+=1;mod=count6%10;">
+            <h1 class="counterAnim">Tap!</h1>
+          </div>
+        </div>
+      </center>
+      <center>
+          <br/>
+          <!--Start Tag Num of Taps Indicator-->
+          <h1 v-if="count6<=1" class="size28 counterAnim">{{count6}} X Tap</h1>
+          <h1 v-if="count6>1&&count6<=10" class="size28 counterAnim">{{count6}} X Taps</h1>
+          <h1 v-if="count6>10&&count6<=25" class="size28 counterAnim">More Than 10 Taps !</h1>
+          <h1 v-if="count6>25&&count6<=50" class="size28 counterAnim">More Than 25 Taps !!</h1>
+          <h1 v-if="count6>50&&count6<=100" class="size28 counterAnim">More Than 50 Taps !!!</h1>
+          <h1 v-if="count6>100&&count6<=500" class="size48 counterAnim">Crazy !!!!</h1>
+          <h1 v-if="count6>500&&count6<=1000" class="size48 counterAnim">The Craziest !!!!!</h1>
+          <h1 v-if="count6>1000&&count6<=10000" class="size28 counterAnim">You Have Reached More Than 1000 Taps !</h1>
+          <h1 v-if="count6>10000" class="size28 counterAnim">Are You Alright ?</h1>
+          <!-- End Tag Num of Taps Indivator-->
+          <br/><br/>
+          <div v-on:click="turn6+=1;isPlay7=true;isPlay6=false;count6=0;">
+            <div class="buttonFinishTap" v-on:click="checkMod()">
+              <b>Next Player Turn</b>
+            </div>
+          </div>
+      </center>
+    </div>
+
+    <div v-if="isPlay7===true&&turn7<=10" class="player-7">
+      <div class="spanCornerLeft">
+        <h1 class="size20 white"><b>Player</b></h1>
+        <h1>7</h1>
+      </div>
+      <div class="spanCornerRight">
+        <h1 class="size20 white"><b>Turn</b></h1>
+        <h1>{{turn7}}</h1>
+      </div>
+      <br/><br/>
+      <center>
+        <div class="stabilizer">
+          <div class="tap7" v-on:click="count7+=1;mod=count7%10;">
+            <h1 class="counterAnim">Tap!</h1>
+          </div>
+        </div>
+      </center>
+      <center>
+          <br/>
+          <!--Start Tag Num of Taps Indicator-->
+          <h1 v-if="count7<=1" class="size28 counterAnim">{{count7}} X Tap</h1>
+          <h1 v-if="count7>1&&count7<=10" class="size28 counterAnim">{{count7}} X Taps</h1>
+          <h1 v-if="count7>10&&count7<=25" class="size28 counterAnim">More Than 10 Taps !</h1>
+          <h1 v-if="count7>25&&count7<=50" class="size28 counterAnim">More Than 25 Taps !!</h1>
+          <h1 v-if="count7>50&&count7<=100" class="size28 counterAnim">More Than 50 Taps !!!</h1>
+          <h1 v-if="count7>100&&count7<=500" class="size48 counterAnim">Crazy !!!!</h1>
+          <h1 v-if="count7>500&&count7<=1000" class="size48 counterAnim">The Craziest !!!!!</h1>
+          <h1 v-if="count7>1000&&count7<=10000" class="size28 counterAnim">You Have Reached More Than 1000 Taps !</h1>
+          <h1 v-if="count7>10000" class="size28 counterAnim">Are You Alright ?</h1>
+          <!-- End Tag Num of Taps Indivator-->
+          <br/><br/>
+          <div v-if="turn7<10" v-on:click="turn7+=1;isPlay1=true;isPlay7=false;count7=0;">
+            <div class="buttonFinishTap" v-on:click="checkMod()">
+              <b>Next Player Turn</b>
+            </div>
+          </div>
+          <div v-if="turn7===10" v-on:click="isPlay7=false;count7=0;">
             <div class="buttonFinishTap" v-on:click="checkModAndFinish()">
               <b>Finish Game</b>
             </div>
@@ -189,8 +304,6 @@
   </div>
 </template>
 <script>
-  import Audio from './Audio.vue';
-
   export default {
       data(){
         return{
@@ -200,14 +313,23 @@
           count2: 0,
           count3: 0,
           count4: 0,
+          count5: 0,
+          count6: 0,
+          count7: 0,
           turn1: 1,
           turn2: 1,
           turn3: 1,
           turn4: 1,
+          turn5: 1,
+          turn6: 1,
+          turn7: 1,
           isPlay1:true,
           isPlay2:false,
           isPlay3:false,
           isPlay4:false,
+          isPlay5:false,
+          isPlay6:false,
+          isPlay7:false,
           isBoom:false  /*Apakah Ada yang Kalah*/
           //finish1: false
         }
@@ -215,13 +337,7 @@
       computed:{
 
       },
-      components: {
-        'music': Audio
-      },
       methods: {
-        play: function(event) {
-          this.$refs.audioElm.play();
-        },
         gotoPage(route) {
           this.$router.push(route);
         },
@@ -428,6 +544,84 @@
   }
   .tap4:active{
     background-color: #ff9f00;
+    height: 246px;
+    width: 246px;
+    font-size: 28px;
+    padding: 94px 67px;
+  }
+
+  .tap5{
+    background-color: #5856ff;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    color:#fff;
+    height: 284px;
+    width: 284px;
+    font-size: 36px;
+    padding: 105px 70px;
+    margin-top: 60px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
+  .tap5:active{
+    background-color: #5829ff;
+    height: 246px;
+    width: 246px;
+    font-size: 28px;
+    padding: 94px 67px;
+  }
+
+  .tap6{
+    background-color: #4cd9ff;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    color:#fff;
+    height: 284px;
+    width: 284px;
+    font-size: 36px;
+    padding: 105px 70px;
+    margin-top: 60px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
+  .tap6:active{
+    background-color: #4cacff;
+    height: 246px;
+    width: 246px;
+    font-size: 28px;
+    padding: 94px 67px;
+  }
+
+  .tap7{
+    background-color: #ff3b30;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    color:#fff;
+    height: 284px;
+    width: 284px;
+    font-size: 36px;
+    padding: 105px 70px;
+    margin-top: 60px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
+  .tap7:active{
+    background-color: #ff0e30;
     height: 246px;
     width: 246px;
     font-size: 28px;

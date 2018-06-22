@@ -1,6 +1,5 @@
 <template>
   <div class="mainDiv-truth-or-dare">
-    <music></music>
     <center>
       <div v-if="isTruth===false&&isDare===false" class="selectTruthDare">
         <div class="buttonTruth" v-on:click="isTruth=true">
@@ -51,7 +50,6 @@
   </div>
 </template>
 <script>
-  import Audio from './Audio.vue';
   export default {
       data(){
         return{
@@ -89,9 +87,6 @@
         gotoPage(route) {
           this.$router.push(route);
         }
-      },
-      components: {
-        'music': Audio
       }
     }
 </script>

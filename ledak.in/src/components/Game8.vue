@@ -1,5 +1,6 @@
 <template>
   <div>
+  <music></music>
   <div v-if="isBoom===false" class="game-4">
     <br/><br/>
     <div v-if="isPlay1===true&&turn1<=10" class="player-1">
@@ -343,6 +344,8 @@
   </div>
 </template>
 <script>
+  import Audio from './Audio.vue';
+
   export default {
       data(){
         return{
@@ -378,6 +381,9 @@
       },
       computed:{
 
+      },
+      components: {
+        'music': Audio
       },
       methods: {
         gotoPage(route) {

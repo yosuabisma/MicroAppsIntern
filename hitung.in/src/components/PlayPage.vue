@@ -1,6 +1,5 @@
 <template>
   <div class="play-page">
-    <music></music>
     <div v-if="nextPlay===false" class="rule-of-game">
       <div class="rules-box">
         <center><h1 class="size24 skipFont"  v-on:click="nextPlay=true;">Tap to skip the tutorial <span></span> </h1></center>
@@ -77,8 +76,6 @@
 <script>
   /*from https://nightcatsama.github.io/vue-slider-component/example/#QuickStart*/
   import vueSlider from 'vue-slider-component';
-  import Audio from './Audio.vue';
-
   export default {
     data(){
       return{
@@ -87,8 +84,7 @@
       }
     },
     components: {
-      vueSlider,
-      'music': Audio
+      vueSlider
     },
     methods: {
       gotoPage(route) {
