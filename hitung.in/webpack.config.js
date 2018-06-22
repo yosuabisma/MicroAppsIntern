@@ -36,14 +36,7 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      },
-      {
-			    test: /\.(ogg|mp3|wav|mpe?g)$/i,
-			    loader: 'file-loader',
-          options: {
-            name: '[name].[ext]?[hash]'
-          }
-			}
+      }
     ]
   },
   resolve: {

@@ -14,20 +14,15 @@
         </div>
       </center>
     </div>
-    <music></music>
+
   </div>
 </template>
 <script>
-    import Audio from './Audio.vue';
-
     export default {
       methods: {
         gotoPage(route) {
           this.$router.push(route);
         }
-      },
-      components: {
-        'music': Audio
       }
     }
 </script>
