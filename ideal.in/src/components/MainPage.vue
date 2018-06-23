@@ -2,6 +2,7 @@
   <div class="main-page">
     <div class="title">
       <h1>Ideal.in</h1>
+      <h4 class="gray">Body Mass Index Calculator</h4>
     </div>
     <br/>
     <br/>
