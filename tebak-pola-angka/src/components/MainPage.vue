@@ -63,11 +63,12 @@
   .main-page {
     padding:30px 30px;
     color: #fff;
-    background: linear-gradient(-60deg, #133a7c, #133a7c, #081534, #081534);
+    background: linear-gradient(-60deg, #1abc9c, #1abc9c, #16a085, #16a085);
     background-size: 400% 400%;
     -webkit-animation: Gradient 5s ease infinite;
     -moz-animation: Gradient 5s ease infinite;
     animation: Gradient 5s ease infinite;
+    cursor:pointer;
     /*height: 640px;
     width: 360px;*/
   }
