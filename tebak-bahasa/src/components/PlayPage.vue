@@ -525,7 +525,7 @@
         quest9:false,
         quest10:false,
         isFinish:false,
-        randomIndex:Math.floor(Math.random() * Math.floor(20)),
+        randomIndex:Math.floor(Math.random() * Math.floor(30)),
         questions: [
                     {
                       text: "pequeno almoço",
@@ -687,6 +687,86 @@
                         {text: 'Thai', correct: true},
                       ]
                     },
+                    {
+                      text: "unë",
+                      petunjuk:"Arsitek utama Taj Mahal di India",
+                      responses: [
+                        {text: 'Latin', correct: false},
+                        {text: 'Albanian', correct: true},
+                      ]
+                    },
+                    {
+                      text: "eu",
+                      petunjuk:"Johnny Weissmuller",
+                      responses: [
+                        {text: 'Romanian', correct: true},
+                        {text: 'Dutch', correct: false},
+                      ]
+                    },
+                    {
+                      text: "jeg",
+                      petunjuk:"Negara paling bahagia pada 2017",
+                      responses: [
+                        {text: 'Norwegian', correct: true},
+                        {text: 'Romanian', correct: false},
+                      ]
+                    },
+                    {
+                      text: "grá",
+                      petunjuk:"Artinya cinta",
+                      responses: [
+                        {text: 'Irish', correct: true},
+                        {text: 'Dutch', correct: false},
+                      ]
+                    },
+                    {
+                      text: "tule edasi",
+                      petunjuk:"Negara pertama di Eropa yang memperkenalkan 'Flat Tax'",
+                      responses: [
+                        {text: 'Spanish', correct: false},
+                        {text: 'Estonian', correct: true},
+                      ]
+                    },
+                    {
+                      text: "fort",
+                      petunjuk:"Artinya pergi",
+                      responses: [
+                        {text: 'Luxembourgish', correct: true},
+                        {text: 'Spanish', correct: false},
+                      ]
+                    },
+                    {
+                      text: "ich",
+                      petunjuk:"Hitler",
+                      responses: [
+                        {text: 'German', correct: true},
+                        {text: 'Dutch', correct: false},
+                      ]
+                    },
+                    {
+                      text: "correndo",
+                      petunjuk:"Artinya berlari",
+                      responses: [
+                        {text: 'Spanish', correct: false},
+                        {text: 'Portuguese', correct: true},
+                      ]
+                    },
+                    {
+                      text: "yürümek",
+                      petunjuk:"Erdogan",
+                      responses: [
+                        {text: 'Turkish', correct: true},
+                        {text: 'Spanish', correct: false},
+                      ]
+                    },
+                    {
+                      text: "san",
+                      petunjuk:"Tim sepakbola bajunya kotak-kotak",
+                      responses: [
+                        {text: 'Croatian', correct: true},
+                        {text: 'Spanish', correct: false},
+                      ]
+                    },
                   ],
       }
     },
@@ -695,7 +775,7 @@
         this.$router.push(route);
       },
       randomIndexNext(){
-        this.randomIndex=Math.floor(Math.random() * Math.floor(20));
+        this.randomIndex=Math.floor(Math.random() * Math.floor(30));
       },
       checkAnswer(randomIndex, index){
         if(this.questions[randomIndex].responses[index].correct===true){

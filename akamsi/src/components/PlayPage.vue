@@ -1,0 +1,1149 @@
+<template>
+  <div class="play-page">
+    <div  v-if="isFinish===false" class="scoreProc spanCornerRight">
+      <h1>{{score}}</h1>
+      <h5>/100</h5>
+    </div>
+
+    <div v-if="quest1===true" class="quests question-1">
+      <h1>1/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest1=false;quest2=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+    <div v-if="quest2===true" class="quests question-2">
+      <h1>2/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest2=false;quest3=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+    <div v-if="quest3===true" class="quests question-3">
+      <h1>3/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest3=false;quest4=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+
+    <div v-if="quest4===true" class="quests question-4">
+      <h1>4/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest4=false;quest5=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+    <div v-if="quest5===true" class="quests question-5">
+      <h1>5/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest5=false;quest6=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+
+    <div v-if="quest6===true" class="quests question-6">
+      <h1>6/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest6=false;quest7=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+    <div v-if="quest7===true" class="quests question-7">
+      <h1>7/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest7=false;quest8=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+    <div v-if="quest8===true" class="quests question-8">
+      <h1>8/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest8=false;quest9=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+    <div v-if="quest9===true" class="quests question-9">
+      <h1>9/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest9=false;quest10=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+    <div v-if="quest10===true" class="quests question-10">
+      <h1>10/10</h1><br/>
+      <center>
+        <div class="showQuest">
+          <h3>{{questions[randomIndex].text}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <h5>Pilihan Jawaban</h5>
+          <table>
+            <tr>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 0);isAnswer=true;isKiri=true;" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKiri===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[0].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[0].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[0].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[0].mes}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div v-if="isAnswer===false" v-on:click="checkAnswer(randomIndex, 1);isAnswer=true;isKanan=true;"  class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===true" class="answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div v-if="isAnswer===true&&isKanan===false" class="darker answer">
+                  <center>
+                    <img class="imgAnswer" v-bind:src="'./../src/assets/img/'+questions[randomIndex].responses[1].text" height="174px" width="145px"/>
+                  </center>
+                </div>
+                <div class="msgLoad">
+                  <div v-if="questions[randomIndex].responses[1].mes==='Benar'&&isAnswer===true" class="msgLoadBenar">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                  <div v-if="questions[randomIndex].responses[1].mes==='Salah'&&isAnswer===true" class="msgLoadSalah">
+                    {{questions[randomIndex].responses[1].mes}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+      <center>
+        <br/>
+        <div v-if="isAnswer===true" class="placeName">
+          <h4>{{namaTempat}}</h4>
+        </div>
+        <br/>
+      </center>
+      <center>
+        <div v-if="isAnswer===true" v-on:click="quest10=false;isFinish=true;isAnswer=false;msg='';namaTempat='';isKiri=false;isKanan=false;randomIndexNext();" class="btnNext">
+          Selanjutnya
+        </div>
+      </center>
+    </div>
+
+    <div class="skorAkhirTitle" v-if="isFinish===true">
+      <center>
+        <h1>
+          Selesai !
+        </h1>
+        <h3>Skor Akhir Kamu</h3>
+        <div class="skorAkhir">
+          <h1>{{score}}</h1>
+          <h5>/ 100</h5>
+        </div>
+      </center>
+    </div>
+
+    <div class="navigation">
+      <div class="spanCornerLeft">
+        <h1 class="size20" v-on:click="gotoPage('/')"><b>Home</b></h1>
+      </div>
+      <div class="spanCornerRight">
+        <h1 class="size20" v-on:click="refresh()"><b></b>Restart</h1>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  export default{
+    data(){
+      return{
+        score:0,
+        msg:"",
+        namaTempat:"",
+        isKiri:false,
+        isKanan:false,
+        isAnswer:false,
+        quest1:true,
+        quest2:false,
+        quest3:false,
+        quest4:false,
+        quest5:false,
+        quest6:false,
+        quest7:false,
+        quest8:false,
+        quest9:false,
+        quest10:false,
+        isFinish:false,
+        randomIndex:Math.floor(Math.random() * Math.floor(15)),
+        questions: [
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'viti.png', correct: false, nama:"Danau Viti (Islandia)", mes:"Salah"},
+                        {text: 'kelimutu.png', correct: true, nama:"Danau Kelimutu (Flores,NTT)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'prambanan.png', correct: true, nama:"Candi Prambanan (Yogyakarta, DIY)", mes:"Benar"},
+                        {text: 'angkorwat.png', correct: false, nama:"Angkor Wat (Kamboja)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'crystal-cave.png', correct: false, nama:"Crystal Cave (Bermuda)", mes:"Salah"},
+                        {text: 'gua-rangko.png', correct: true, nama:"Goa Rangko (Flores, NTT)", mes:"Benar"},
+                      ]
+                    },
+
+
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'Inferno-crater-lake-new-zealand.png', correct: false, nama:"Inferno Crater Lake (New Zealand)", mes:"Salah"},
+                        {text: 'Kawah-putih-Bandung-jawabarat.png', correct: true, nama:"Kawah Putih (Bandung, Jawa Barat)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'lugu.png', correct: false, nama:"Danau Lugu (Yunnan, China)", mes:"Salah"},
+                        {text: 'toba.png', correct: true, nama:"Danau Toba (Sumatera Utara)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'Zhangjiajie.png', correct: false, nama:"Taman Hutan Nasional Zhangjiajie (China)", mes:"Salah"},
+                        {text: 'pegadungan.png', correct: true, nama:"Pantai Pegadungan (Lampung)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'krabi.png', correct: false, nama:"Kepulauan Phoo Phi Krabi (Thailand)", mes:"Salah"},
+                        {text: 'rajaampat.png', correct: true, nama:"Kepulauan Raja Ampat (Raja Ampat)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'babel.png', correct: true, nama:"Kepulauan Bangka Belitung", mes:"Benar"},
+                        {text: 'pamukkale.png', correct: false, nama:"Pamukkale (Turki)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'cinta.png', correct: true, nama:"Pulau Cinta (Gorontalo)", mes:"Benar"},
+                        {text: 'bora.png', correct: false, nama:"Pulau Bora Bora (Perancis)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'pelalang.png', correct: true, nama:"Bukit Pelalangan (Bangkalan, Jawa Timur)", mes:"Benar"},
+                        {text: 'antelope.png', correct: false, nama:"Ngarai Antelope (Arizona, Amerika Serikat)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'telaga-warna.png', correct: true, nama:"Telaga Warna (Dataran Tinggi Dieng, Jawa Tengah)", mes:"Benar"},
+                        {text: 'plitvice.png', correct: false, nama:"Danau Plitvice (Kroasia)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'jfc.png', correct: true, nama:"Jember Fashion Carnival (Jember, Jawa Timur)", mes:"Benar"},
+                        {text: 'rio.png', correct: false, nama:"Rio Carnival (Brazil)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'jomblang.png', correct: true, nama:"Gua Jomblang (Gunung Kidul, DI Yogyakarta)", mes:"Benar"},
+                        {text: 'stephen.png', correct: false, nama:"Stephen Gap (Alabama, AS)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'baluran.png', correct: true, nama:"Taman Nasional Baluran (Jawa Timur)", mes:"Benar"},
+                        {text: 'maasai.png', correct: false, nama:"Situs Maasai (Kenya)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'tagsi.png', correct: true, nama:"Pantai Tagsi (Lombok Timur, Nusa Tenggara Barat)", mes:"Benar"},
+                        {text: 'balos.png', correct: false, nama:"Laguna Pantai Balos (Crete, Yunani)", mes:"Salah"},
+                      ]
+                    },
+
+                  ],
+      }
+    },
+    methods: {
+      gotoPage(route) {
+        this.$router.push(route);
+      },
+      randomIndexNext(){
+        this.randomIndex=Math.floor(Math.random() * Math.floor(15));
+      },
+      checkAnswer(randomIndex, index){
+        if(this.questions[randomIndex].responses[index].correct===true){
+          this.score+=10;
+          this.msg="BENAR";
+          this.namaTempat=this.questions[randomIndex].responses[index].nama;
+        }else{
+          this.msg="SALAH";
+          this.namaTempat=this.questions[randomIndex].responses[index].nama;
+        }
+      },
+      refresh(){
+        location.reload();
+      }
+    }
+  }
+</script>
+<style>
+  /*font*/
+  .size20{
+    font-size: 20px;
+  }
+  .yellow{
+    color: #ffb142;
+  }
+  .play-page{
+    padding: 30px 30px;
+    height: 640px;
+    width: 360px;
+    cursor:pointer;
+    background: #222;
+    color: #fff;
+  }
+  .buttonFinishTap{
+    color:#fff;
+    font-size:36px;
+    background-color: #cc2444;
+    border-radius:8px;
+    padding: 6px 6px;
+    margin-top: 20px;
+    animation-name: stretch;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
+  .buttonFinishTap:hover{
+    background-color: #ff2d55;
+  }
+
+  @keyframes stretch {
+    0% {
+      transform: scale(.8);
+      background-color: #ff793f;
+    }
+    50% {
+      background-color: #ff793f;
+    }
+    100% {
+      transform: scale(1);
+      background-color: #cd6133;
+    }
+  }
+  .showQuest{
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 10px 10px;
+    height: 100px;
+    color: #fff;
+    border-bottom: 3px solid #fff;
+  }
+  td{
+  }
+  tr{
+  }
+  .answerList{
+    padding-bottom: 30px;
+    border-bottom: 3px solid #fff;
+  }
+  .imgAnswer{
+    border: 3px solid #fff;
+  }
+  .imgAnswer:active{
+    border: 3px solid #fd9644;
+  }
+  .imgAnswer:hover{
+    border: 3px solid #fd9644;
+  }
+  .answer{
+    width:145px;
+    height:174px;
+  }
+  .answer:hover{
+    color:#fff;
+  }
+  /*Navigation CSS*/
+  .navigation{
+    padding: 25px 25px;
+    margin-top: 20px;
+  }
+  .spanCornerLeft{
+    float:left;
+  }
+  .spanCornerRight{
+    float:right;
+  }
+  .scoreProc{
+    background-color:#eb2f06;
+    padding: 10px 20px;
+    margin-top: -30px;
+    margin-right: -30px;
+  }
+  .skorAkhir{
+    margin-top: 100px;
+    animation-name: stretchSkor;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+  }
+  .skorAkhirTitle{
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  @keyframes stretchSkor {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.6);
+    }
+  }
+  .btnNext{
+    background-color:#3867d6;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  .btnNext:hover{
+    background-color:#8854d0;
+  }
+  .msgLoad{
+      padding: 10px 10px;
+      font-weight: bold;
+  }
+  .msgLoadBenar{
+    color:#079992;
+  }
+  .msgLoadSalah{
+    color:#e55039;
+  }
+  .darker{
+    -webkit-filter:brightness(20%);
+  }
+</style>
