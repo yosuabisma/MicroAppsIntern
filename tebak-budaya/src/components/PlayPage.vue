@@ -1,470 +1,7 @@
 <template>
   <div class="play-page">
-    <div  v-if="isFinish===false" class="scoreProc spanCornerRight">
-      <h1>{{score}}</h1>
-      <h5>/100</h5>
-    </div>
-    <div v-if="quest1===true" class="quests question-1">
-      <h1>Pertanyaan 1</h1><br/>
-      <center>
-        <div class="showQuest">
-          <!-- <h3>{{questions[randomIndex].text}}</h3> -->
-          <img v-attr="src: questions[randomIndex].link"/>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest1=false;quest2=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest1=false;quest2=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest1=false;quest2=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest2===true" class="quests question-2">
-      <h1>Pertanyaan 2</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest2=false;quest3=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest2=false;quest3=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest2=false;quest3=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest2=false;quest3=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest2=false;quest3=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest3===true" class="quests question-3">
-      <h1>Pertanyaan 3</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest3=false;quest4=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest3=false;quest4=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest3=false;quest4=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest3=false;quest4=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest3=false;quest4=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest4===true" class="quests question-4">
-      <h1>Pertanyaan 4</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest4=false;quest5=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest4=false;quest5=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest4=false;quest5=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest4=false;quest5=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest4=false;quest5=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest5===true" class="quests question-5">
-      <h1>Pertanyaan 5</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest5=false;quest6=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest5=false;quest6=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest5=false;quest6=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest5=false;quest6=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest5=false;quest6=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest6===true" class="quests question-6">
-      <h1>Pertanyaan 6</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest6=false;quest7=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest6=false;quest7=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest6=false;quest7=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest6=false;quest7=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest6=false;quest7=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest7===true" class="quests question-7">
-      <h1>Pertanyaan 7</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest7=false;quest8=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest7=false;quest8=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest7=false;quest8=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest7=false;quest8=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest7=false;quest8=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest8===true" class="quests question-8">
-      <h1>Pertanyaan 8</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest8=false;quest9=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest8=false;quest9=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest8=false;quest9=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest8=false;quest9=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest8=false;quest9=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest9===true" class="quests question-9">
-      <h1>Pertanyaan 9</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest9=false;quest10=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest9=false;quest10=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest9=false;quest10=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest9=false;quest10=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest9=false;quest10=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest10===true" class="quests question-9">
-      <h1>Pertanyaan 10</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest10=false;isFinish=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest10=false;isFinish=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest10=false;isFinish=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest10=false;isFinish=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest10=false;isFinish=true;">
-          <div class="buttonFinishTap" v-on:click="">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-
-    <div class="skorAkhirTitle" v-if="isFinish===true">
+    <center>
+    <div class="skorAkhirTitle" v-if="indexQuest>10">
       <center>
         <h1>
           Selesai !
@@ -474,17 +11,58 @@
           <h1>{{score}}</h1>
           <h5>/ 100</h5>
         </div>
+        <div class="spanCornerLeft pilihanSkorAkhir">
+          <h1 class="size20" v-on:click="gotoPage('/')"><b>Home</b></h1>
+        </div>
+        <div class="spanCornerRight pilihanSkorAkhir">
+          <h1 class="size20" v-on:click="refresh()"><b></b>Restart</h1>
+        </div>
+      </center>
+    </div>
+  </center>
+    <div  v-if="indexQuest<=10" class="scoreProc spanCornerRight">
+      <h1>{{score}}</h1>
+      <h5>/100</h5>
+    </div>
+    <div v-if="indexQuest<=10" class="quests">
+      <h1>Pertanyaan {{indexQuest}}</h1><br/>
+      <center>
+        <div class="showQuest">
+          <!-- <h3>{{questions[randomIndex].text}}</h3> -->
+          <img v-if="questions[randomIndex].isPictures==true" v-bind:src="'' + questions[randomIndex].link" class="question-set" />
+          <h3 v-else>{{questions[randomIndex].link}}</h3>
+        </div>
+      </center>
+      <br/><br/>
+      <center>
+        <div class="answerList">
+          <table>
+            <tr>
+              <td>
+                <div v-on:click="checkAnswer(randomIndex, 0);indexQuest+=1;randomIndexNext();" class="answer">
+                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
+                </div>
+
+              </td>
+              <td>
+                <div v-on:click="checkAnswer(randomIndex, 1);indexQuest+=1;randomIndexNext();" class="answer">
+                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
       </center>
     </div>
 
-    <div class="navigation">
+    <!-- <div class="navigation">
       <div class="spanCornerLeft">
         <h1 class="size20" v-on:click="gotoPage('/')"><b>Home</b></h1>
       </div>
       <div class="spanCornerRight">
         <h1 class="size20" v-on:click="refresh()"><b></b>Restart</h1>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -492,160 +70,138 @@
     data(){
       return{
         score:0,
-        quest1:true,
-        quest2:false,
-        quest3:false,
-        quest4:false,
-        quest5:false,
-        quest6:false,
-        quest7:false,
-        quest8:false,
-        quest9:false,
-        quest10:false,
-        isFinish:false,
-        randomIndex:Math.floor(Math.random() * Math.floor(20)),
+        indexQuest:1,
+        randomIndex:Math.floor(Math.random() * Math.floor(10)),
         questions: [
                     {
-                      text: "1, 3, 5, 7, ...",
+                      link: "./../src/assets/mapasilaga.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '8', correct: false},
-                        {text: '6', correct: false}
+                        {text: 'Toraja', correct: true},
+                        {text: 'Gowa', correct: false}
                       ]
                     },
                     {
-                      text: "11, 21, 6, 15, 20, 6, 19, ..., 6",
+                      link: "./../src/assets/tabuik.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '19', correct: true},
-                        {text: '27', correct: false}
+                        {text: 'Minang', correct: true},
+                        {text: 'Toraja', correct: false}
                       ]
                     },
                     {
-                      text: "2, 4, 8, 2, 8, 24, 2, 16, 72, ...",
+                      link: "./../src/assets/tiwah.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '8', correct: false},
-                        {text: '32', correct: false}
+                        {text: 'Baduy', correct: false},
+                        {text: 'Dayak', correct: true}
                       ]
                     },
                     {
-                      text: "10, 20, 30, 40, 50, ...",
+                      link: "./../src/assets/palang-pintu.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '60', correct: true},
-                        {text: '45', correct: false}
+                        {text: 'Madura', correct: false},
+                        {text: 'Betawi', correct: true}
                       ]
                     },
                     {
-                      text: "1, 0, 1, 1, 1, -1, 1, 2, 1, -2, ...",
+                      link: "./../src/assets/batombe.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '0', correct: false},
-                        {text: '1', correct: true}
+                        {text: 'Minang', correct: true},
+                        {text: 'Batak', correct: false}
                       ]
                     },
                     {
-                      text: "10, 5, 10, 5, ...",
+                      link: "./../src/assets/lompat-batu.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '25', correct: false},
-                        {text: '10', correct: true}
+                        {text: 'Nias', correct: true},
+                        {text: 'Batak', correct: false}
                       ]
                     },
                     {
-                      text: "1, 3, 7, 15, 31, ...",
+                      link: "./../src/assets/kremasi.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '63', correct: true},
-                        {text: '62', correct: false}
+                        {text: 'Toraja', correct: false},
+                        {text: 'Bali', correct: true}
                       ]
                     },
                     {
-                      text: "2, 0, 1, 4, 0, 2, 8, ...",
+                      link: "./../src/assets/injek-telur.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '10', correct: false},
-                        {text: '2', correct: false}
+                        {text: 'Madura', correct: false},
+                        {text: 'Jawa', correct: true}
                       ]
                     },
                     {
-                      text: "1, 2, 3, 6, 5, 4, 7, 8, ..., 12",
+                      link: "./../src/assets/midodareni.jpg",
+                      isPictures: true,
                       responses: [
-                        {text: '10', correct: false},
-                        {text: '11', correct: false}
+                        {text: 'Sunda', correct: false},
+                        {text: 'Jawa', correct: true}
                       ]
                     },
                     {
-                      text: "50, 40, 100, 90, ..., 140, 200, 190.",
+                      link: "Anak pertama tidak boleh menikah dengan anak nomor tiga.",
+                      isPictures: false,
                       responses: [
-                        {text: '140', correct: false},
-                        {text: '120', correct: false}
+                        {text: 'Jawa', correct: true},
+                        {text: 'Sunda', correct: false}
                       ]
                     },
                     {
-                      text: "2, 4, 6, 9, 11, 13, 16, ...",
+                      link: "Tidak boleh memakai baju merah saat melayat.",
+                      isPictures: false,
                       responses: [
-                        {text: '22', correct: false},
-                        {text: '17', correct: false}
+                        {text: 'Madura', correct: false},
+                        {text: 'Jawa', correct: true}
                       ]
                     },
                     {
-                      text: "3, 8, 13, 18, 23, ...",
+                      link: "Pernikahan pada siang hari bukanlah waktu yang baik.",
+                      isPictures: false,
                       responses: [
-                        {text: '23', correct: false},
-                        {text: '28', correct: true}
+                        {text: 'Aceh', correct: true},
+                        {text: 'Minang', correct: false}
                       ]
                     },
                     {
-                      text: "1, 2, 3, 4, 5, 6, 7, ...",
+                      link: "Pernikahan pada siang hari bukanlah waktu yang baik.",
+                      isPictures: false,
                       responses: [
-                        {text: '10', correct: false},
-                        {text: '11', correct: false}
+                        {text: 'Aceh', correct: true},
+                        {text: 'Minang', correct: false}
                       ]
                     },
                     {
-                      text: "2, 4, 4, 7, 8, 10, ...",
+                      link: "Pengantin yang berwajah kusam dan terlihat gelap di hari pernikahan harus melihat pantat periuk atau wajan ",
+                      isPictures: false,
                       responses: [
-                        {text: '16', correct: true},
-                        {text: '11', correct: false}
+                        {text: 'Aceh', correct: true},
+                        {text: 'Batak', correct: false}
                       ]
                     },
                     {
-                      text: "1, 3, 9, ...",
+                      link: "Rumah tidak boleh menghadap ke timur.",
+                      isPictures: false,
                       responses: [
-                        {text: '27', correct: true},
-                        {text: '18', correct: false},
+                        {text: 'Jawa', correct: true},
+                        {text: 'Minang', correct: false}
                       ]
                     },
                     {
-                      text: "0, 0, 0, ...",
+                      link: "Dilarang Membakar Terong.",
+                      isPictures: false,
                       responses: [
-                        {text: '0', correct: true},
-                        {text: '-1', correct: false},
+                        {text: 'Banjar', correct: true},
+                        {text: 'Bugis', correct: false}
                       ]
                     },
-                    {
-                      text: "-1, 0, -1, ...",
-                      responses: [
-                        {text: '1', correct: false},
-                        {text: '-11', correct: false},
-                      ]
-                    },
-                    {
-                      text: "4, 5, 7, 10, 14, 19, ...",
-                      responses: [
-                        {text: '25', correct: true},
-                        {text: '24', correct: false},
-                      ]
-                    },
-                    {
-                      text: "5, 7, ..., 49, 500, 343, 5000",
-                      responses: [
-                        {text: '63', correct: false},                        {text: '150', correct: false},
-                      ]
-                    },
-                    {
-                      text: "6, 8, 10, 11, 14, 14, ...",
-                      responses: [
-                        {text: '18', correct: true},
-                        {text: '12', correct: false},
-                      ]
-                    },
-
-                  ], /*20 Pertanyaan*/
+                  ] /*16 Pertanyaan*/
 
       }
     },
@@ -654,9 +210,9 @@
         this.$router.push(route);
       },
       randomIndexNext(){
-        this.randomIndex=Math.floor(Math.random() * Math.floor(20));
+        this.randomIndex=Math.floor(Math.random() * Math.floor(10));
       },
-      checkAnswer(randomIndex, index){
+      checkAnswer(randomIndex, index) {
         if(this.questions[randomIndex].responses[index].correct===true){
           this.score+=10;
           //this.randomIndex=Math.floor(Math.random() * Math.floor(10));
@@ -672,6 +228,10 @@
   /*font*/
   .size20{
     font-size: 20px;
+  }
+  .showQuest img {
+    width: 250px;
+    height: 210px;
   }
   .play-page{
     padding: 30px 30px;
@@ -727,7 +287,7 @@
     background-color: #d5f5e3;
     border-radius: 10px;
     padding: 20px 20px;
-    height: 90px;
+    height: 250px;
     color: #186a3b;
   }
   td{
@@ -739,7 +299,6 @@
   .answer{
     width:130px;
     background-color: #1dd1a1;
-    padding: 10px 40px;
     border-radius: 8px;
     border: 2px solid #1dd1a1;
   }
@@ -776,8 +335,24 @@
     animation-play-state: running;
   }
   .skorAkhirTitle{
-    margin-top: 100px;
-    margin-bottom: 100px;
+    /* margin-top: 100px;
+    margin-bottom: 100px; */
+    display: block;
+    position: absolute;
+    background-color: rgba(255,255,255,1);
+    width: 300px;
+    height: 560px;
+    padding-top: 90px;
+    padding-left: 25px;
+    padding-right: 25px;
+    overflow: hidden;
+    color: black;
+  }
+  .skorAkhirTitle .pilihanSkorAkhir {
+    width: 80px;
+    height: 30px;
+    /* background-color: red; */
+    margin-top: 180px;
   }
   @keyframes stretchSkor {
     0% {
