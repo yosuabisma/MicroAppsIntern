@@ -5,8 +5,9 @@
       <h5>/100</h5>
     </div>
     <div v-if="indexQuest<=10" class="quests">
-      <h1>Pertanyaan {{indexQuest}}</h1><br/>
+      <h1>{{indexQuest}}/10</h1><br/>
       <center>
+        <h4>Lengkapi pola angka berikut ini</h4>
         <div class="showQuest">
           <h3>{{questions[randomIndex].text}}</h3>
         </div>
@@ -17,24 +18,24 @@
           <table>
             <tr>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);indexQuest+=1;randomIndexNext();" class="answer">
+                <div v-on:click="checkAnswer(randomIndex, 0);indexQuest+=1;randomIndexNext();" class="answerA">
                   <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
                 </div>
               </td>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);indexQuest+=1;randomIndexNext();" class="answer">
+                <div v-on:click="checkAnswer(randomIndex, 1);indexQuest+=1;randomIndexNext();" class="answerB">
                   <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
                 </div>
               </td>
             </tr>
             <tr>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);indexQuest+=1;randomIndexNext();" class="answer">
+                <div v-on:click="checkAnswer(randomIndex, 2);indexQuest+=1;randomIndexNext();" class="answerC">
                   <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
                 </div>
               </td>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);indexQuest+=1;randomIndexNext();" class="answer">
+                <div v-on:click="checkAnswer(randomIndex, 3);indexQuest+=1;randomIndexNext();" class="answerD">
                   <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
                 </div>
               </td>
@@ -81,9 +82,6 @@
       <div class="spanCornerLeft">
         <h1 class="size20" v-on:click="gotoPage('/')"><b>Home</b></h1>
       </div>
-      <div class="spanCornerRight">
-        <h1 class="size20" v-on:click="refresh()"><b></b>Restart</h1>
-      </div>
     </div>
 
   </div>
@@ -94,7 +92,7 @@
       return{
         score:0,
         indexQuest:1,
-        randomIndex:Math.floor(Math.random() * Math.floor(20)),
+        randomIndex:Math.floor(Math.random() * Math.floor(38)),
         questions: [
                     {
                       text: "1, 3, 5, 7, ...",
@@ -133,12 +131,12 @@
                       ]
                     },
                     {
-                      text: "1, 0, 1, 1, 1, -1, 1, 2, 1, -2, ...",
+                      text: "99, 1, 98, 2, 97, 3, 96, ...",
                       responses: [
-                        {text: '0', correct: false},
-                        {text: '-1', correct: false},
-                        {text: '-2', correct: false},
-                        {text: '1', correct: true},
+                        {text: '8', correct: false},
+                        {text: '6', correct: false},
+                        {text: '5', correct: false},
+                        {text: '4', correct: true},
                       ]
                     },
                     {
@@ -178,7 +176,7 @@
                       ]
                     },
                     {
-                      text: "50, 40, 100, 90, ..., 140, 200, 190.",
+                      text: "50, 40, 100, 90, ..., 140, 200, 190",
                       responses: [
                         {text: '140', correct: false},
                         {text: '150', correct: true},
@@ -276,8 +274,170 @@
                         {text: '12', correct: false},
                       ]
                     },
+                    {
+                      text: "8, 10, 11, 14, 14, 18, 17, ...",
+                      responses: [
+                        {text: '22', correct: true},
+                        {text: '14', correct: false},
+                        {text: '18', correct: false},
+                        {text: '19', correct: false},
+                      ]
+                    },
+                    {
+                      text: "9, 3, 10, 3, 11, 3, 12, ...",
+                      responses: [
+                        {text: '10', correct: false},
+                        {text: '4', correct: false},
+                        {text: '3', correct: true},
+                        {text: '13', correct: false},
+                      ]
+                    },
+                    {
+                      text: "0, 1, 6, 3, 4, 9, 6, ...",
+                      responses: [
+                        {text: '3', correct: false},
+                        {text: '6', correct: false},
+                        {text: '7', correct: true},
+                        {text: '8', correct: false},
+                      ]
+                    },
+                    {
+                      text: "2, 20, ..., 2000",
+                      responses: [
+                        {text: '100', correct: false},
+                        {text: '200', correct: true},
+                        {text: '50', correct: false},
+                        {text: '300', correct: false},
+                      ]
+                    },
+                    {
+                      text: "10, 5, 15, ..., 22.5, 11.25",
+                      responses: [
+                        {text: '10', correct: false},
+                        {text: '7.5', correct: true},
+                        {text: '6.5', correct: false},
+                        {text: '15', correct: false},
+                      ]
+                    },
+                    {
+                      text: "1, 3, 9, 27, ...",
+                      responses: [
+                        {text: '36', correct: false},
+                        {text: '45', correct: false},
+                        {text: '81', correct: true},
+                        {text: '54', correct: false},
+                      ]
+                    },
+                    {
+                      text: "1, 3, 6, 10, 15, ...",
+                      responses: [
+                        {text: '25', correct: false},
+                        {text: '20', correct: false},
+                        {text: '21', correct: true},
+                        {text: '18', correct: false},
+                      ]
+                    },
+                    {
+                      text: "0, 7, 15, 24, 34, ...",
+                      responses: [
+                        {text: '43', correct: false},
+                        {text: '44', correct: false},
+                        {text: '40', correct: false},
+                        {text: '45', correct: true},
+                      ]
+                    },
+                    {
+                      text: "0, 1, 2, 3, 6, 7, 14, 15, ...",
+                      responses: [
+                        {text: '27', correct: false},
+                        {text: '16', correct: false},
+                        {text: '20', correct: false},
+                        {text: '30', correct: true},
+                      ]
+                    },
+                    {
+                      text: "3, 4, 6, 8, 12, 16, ...",
+                      responses: [
+                        {text: '48', correct: false},
+                        {text: '36', correct: false},
+                        {text: '18', correct: false},
+                        {text: '24', correct: true},
+                      ]
+                    },
+                    {
+                      text: "4, 16, 5, 25, 6, 36, 7, ...",
+                      responses: [
+                        {text: '46', correct: false},
+                        {text: '8', correct: false},
+                        {text: '45', correct: false},
+                        {text: '49', correct: true},
+                      ]
+                    },
+                    {
+                      text: "69, 23, 92, ..., 110.4",
+                      responses: [
+                        {text: '17', correct: false},
+                        {text: '24', correct: false},
+                        {text: '55', correct: false},
+                        {text: '18.4', correct: true},
+                      ]
+                    },
+                    {
+                      text: "11, ..., 1001, 10001, 100001",
+                      responses: [
+                        {text: '101', correct: true},
+                        {text: '111', correct: false},
+                        {text: '112', correct: false},
+                        {text: '1', correct: false},
+                      ]
+                    },
+                    {
+                      text: "105, 35, 36, 12, ...",
+                      responses: [
+                        {text: '13', correct: true},
+                        {text: '103', correct: false},
+                        {text: '18', correct: false},
+                        {text: '6', correct: false},
+                      ]
+                    },
+                    {
+                      text: "321, 456, 987, 123, 654, ...",
+                      responses: [
+                        {text: '789', correct: true},
+                        {text: '897', correct: false},
+                        {text: '456', correct: false},
+                        {text: '988', correct: false},
+                      ]
+                    },
+                    {
+                      text: "14, 7, 15, 45, 16, 8, 17, ...",
+                      responses: [
+                        {text: '51', correct: true},
+                        {text: '34', correct: false},
+                        {text: '8.5', correct: false},
+                        {text: '8', correct: false},
+                      ]
+                    },
+                    {
+                      text: "101, 102, 103, 301, 201, ...",
+                      responses: [
+                        {text: '101', correct: true},
+                        {text: '301', correct: false},
+                        {text: '102', correct: false},
+                        {text: '103', correct: false},
+                      ]
+                    },
+                    {
+                      text: "11, 22, 33, 11, 33, 44, 11, ..., 55",
+                      responses: [
+                        {text: '44', correct: true},
+                        {text: '33', correct: false},
+                        {text: '22', correct: false},
+                        {text: '11', correct: false},
+                      ]
+                    },
 
-                  ], /*20 Pertanyaan*/
+                  ], /*38 Pertanyaan*/
 
       }
     },
@@ -286,7 +446,7 @@
         this.$router.push(route);
       },
       randomIndexNext(){
-        this.randomIndex=Math.floor(Math.random() * Math.floor(20));
+        this.randomIndex=Math.floor(Math.random() * Math.floor(38));
       },
       checkAnswer(randomIndex, index){
         if(this.questions[randomIndex].responses[index].correct===true){
@@ -368,21 +528,50 @@
   tr{
     padding: 5px 5px;
   }
-  .answer{
+  .answerA{
+    width:130px;
+    background-color: #2980b9;
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: 2px solid #2980b9;
+  }
+  .answerA:hover{
+    border: 2px solid #fff;
+  }
+  .answerB{
+    width:130px;
+    background-color: #f1c40f;
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: 2px solid #f1c40f;
+  }
+  .answerB:hover{
+    border: 2px solid #fff;
+  }
+  .answerC{
     width:130px;
     background-color: #1dd1a1;
     padding: 10px 40px;
     border-radius: 8px;
     border: 2px solid #1dd1a1;
   }
-  .answer:hover{
-    background-color: #10ac84;
+  .answerC:hover{
+    border: 2px solid #fff;
+  }
+  .answerD{
+    width:130px;
+    background-color: #e74c3c;
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: 2px solid #e74c3c;
+  }
+  .answerD:hover{
     border: 2px solid #fff;
   }
   /*Navigation CSS*/
   .navigation{
     padding: 25px 25px;
-    margin-top: 20px;
+    margin-top: 80px;
   }
   .spanCornerLeft{
     float:left;

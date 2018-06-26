@@ -83,9 +83,6 @@
       <div class="spanCornerLeft">
         <h1 class="size20" v-on:click="gotoPage('/')"><b>Home</b></h1>
       </div>
-      <div class="spanCornerRight">
-        <h1 class="size20" v-on:click="refresh()"><b></b>Restart</h1>
-      </div>
     </div>
   </div>
 </template>
@@ -333,7 +330,7 @@
                     },
                     {
                       text: "san",
-                      petunjuk:"Tim sepakbola bajunya kotak-kotak",
+                      petunjuk:"Jersey sepak bola khas kotak",
                       responses: [
                         {text: 'Croatian', correct: true},
                         {text: 'Spanish', correct: false},

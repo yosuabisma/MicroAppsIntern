@@ -6,7 +6,7 @@
     </div>
     <div class="titleAbout">
       <h1 class="size72 purple height1"><b>About</b></h1>
-      <h1 class="size24 height2 teamName"><b>Team XXX</b></h1>
+      <h1 class="size24 height2 teamName"><b>Team</b></h1>
     </div>
     <div class="teamMember">
       <h1 class="size20">@abi_abdurrhmn</h1>

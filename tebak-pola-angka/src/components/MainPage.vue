@@ -113,7 +113,7 @@
     margin-top:100px;
   }
   .bottomBtn{
-    margin-top: 130px;
+    margin-top: 95px;
   }
   .buttonPlay{
     color:#fff;

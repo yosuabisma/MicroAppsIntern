@@ -125,9 +125,6 @@
       <div class="spanCornerLeft">
         <h1 class="size20" v-on:click="gotoPage('/')"><b>Home</b></h1>
       </div>
-      <div class="spanCornerRight">
-        <h1 class="size20" v-on:click="refresh()"><b></b>Restart</h1>
-      </div>
     </div>
 
   </div>
@@ -143,7 +140,7 @@
         isKanan:false,
         isAnswer:false,
         indexQuest:1,
-        randomIndex:Math.floor(Math.random() * Math.floor(15)),
+        randomIndex:Math.floor(Math.random() * Math.floor(24)),
         questions: [
                     {
                       text: "Mana yang Indonesia ?",
@@ -252,6 +249,69 @@
                         {text: 'balos.png', correct: false, nama:"Laguna Pantai Balos (Crete, Yunani)", mes:"Salah"},
                       ]
                     },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'Baluran-Indonesia.png', correct: true, nama:"Baluran (Indonesia)", mes:"Benar"},
+                        {text: 'Afrika.png', correct: false, nama:"Afrika", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'Jakarta-Indonesia.png', correct: true, nama:"Jakarta (Indonesia)", mes:"Benar"},
+                        {text: 'Europe.png', correct: false, nama:"Europe", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'Malang-Indonesia.png', correct: true, nama:"Malang (Indonesia)", mes:"Benar"},
+                        {text: 'Yunani.png', correct: false, nama:"Yunani", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'berbisik.png', correct: true, nama:"Pasir Berbisik (Bromo, Indonesia)", mes:"Benar"},
+                        {text: 'Sahara.png', correct: false, nama:"Gurun Sahara (Afrika)", mes:"Salah"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'sanfransisco.png', correct: false, nama:"San Fransisco", mes:"Salah"},
+                        {text: 'palembang-indonesia.png', correct: true, nama:"Jembatan Ampera (Palembang, Indonesia)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'pokoknya-singapura.png', correct: false, nama:"Singapura", mes:"Salah"},
+                        {text: 'yogyakarta-indonesia.png', correct: true, nama:"Yogyakarta (Indonesia)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'gn-everest.png', correct: false, nama:"Gunung Everest (Tibet)", mes:"Salah"},
+                        {text: 'jayawijaya.png', correct: true, nama:"Gunung Jayawijaya (Papua, Indonesia)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'Turkey.png', correct: false, nama:"Turki", mes:"Salah"},
+                        {text: 'Medan.png', correct: true, nama:"Medan (Sumatera Utara, Indonesia)", mes:"Benar"},
+                      ]
+                    },
+                    {
+                      text: "Mana yang Indonesia ?",
+                      responses: [
+                        {text: 'new-zealand.png', correct: false, nama:"New Zealand", mes:"Salah"},
+                        {text: 'pulau-komodo.png', correct: true, nama:"Pulau Komodo (NTT, Indonesia)", mes:"Benar"},
+                      ]
+                    },
 
                   ],
       }
@@ -261,7 +321,7 @@
         this.$router.push(route);
       },
       randomIndexNext(){
-        this.randomIndex=Math.floor(Math.random() * Math.floor(15));
+        this.randomIndex=Math.floor(Math.random() * Math.floor(24));
       },
       checkAnswer(randomIndex, index){
         if(this.questions[randomIndex].responses[index].correct===true){
