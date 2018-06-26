@@ -4,7 +4,8 @@
       <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
     </div>
     <div class="title">
-      <h1 class="size60"><b>Tebak Pola Angka</b></h1>
+      <br/><br/>
+      <center><img v-bind:src="'./../src/assets/img/logo-tebak-angka.svg'" height="250px"/></center>
     </div>
     <div class="bottomBtn">
       <center>
@@ -109,10 +110,10 @@
     }
   }
   .title{
-    margin-top:70px;
+    margin-top:100px;
   }
   .bottomBtn{
-    margin-top: 250px;
+    margin-top: 130px;
   }
   .buttonPlay{
     color:#fff;

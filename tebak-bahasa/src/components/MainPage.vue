@@ -3,8 +3,11 @@
     <div class="about">
       <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
     </div>
+
     <div class="title">
-      <h1 class="size60"><b>Tebak Bahasa</b></h1>
+      <br/><br/>
+      <center><img v-bind:src="'./../src/assets/img/logo-tebak-bahasa.svg'" height="250px"/></center>
+      <!--h1 class="size60"><b>Tebak Bahasa</b></h1-->
     </div>
     <div class="bottomBtn">
       <center>
@@ -62,7 +65,6 @@
 
   .main-page {
     padding:30px 30px;
-    color: #fff;
     background: linear-gradient(-60deg, #2c2c54, #2c2c54, #474787,#474787);
     background-size: 400% 400%;
     -webkit-animation: Gradient 5s ease infinite;
@@ -109,10 +111,10 @@
     }
   }
   .title{
-    margin-top:70px;
+    margin-top:100px;
   }
   .bottomBtn{
-    margin-top: 250px;
+    margin-top: 130px;
   }
   .buttonPlay{
     color:#fff;

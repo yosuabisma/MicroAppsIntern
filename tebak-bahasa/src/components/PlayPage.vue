@@ -46,6 +46,26 @@
       </center>
     </div>
 
+    <center>
+      <div  v-if="indexQuest>10" class="imgResults">
+        <div v-if="score>0&&score<=20">
+          <img v-bind:src="'./../src/assets/img/skorIMG/1.gif'" height="160px"/>
+        </div>
+        <div v-if="score>20&&score<=40">
+          <img v-bind:src="'./../src/assets/img/skorIMG/2.gif'" height="160px"/>
+        </div>
+        <div v-if="score>40&&score<=60">
+          <img v-bind:src="'./../src/assets/img/skorIMG/3.gif'" height="160px"/>
+        </div>
+        <div v-if="score>60&&score<=80">
+          <img v-bind:src="'./../src/assets/img/skorIMG/4.gif'" height="160px"/>
+        </div>
+        <div v-if="score>80&&score<=100">
+          <img v-bind:src="'./../src/assets/img/skorIMG/5.gif'" height="160px"/>
+        </div>
+      </div>
+    </center>
+
     <div class="skorAkhirTitle" v-if="indexQuest>10">
       <center>
         <h1>
@@ -456,7 +476,7 @@
     animation-play-state: running;
   }
   .skorAkhirTitle{
-    margin-top: 100px;
+    margin-top: 20px;
     margin-bottom: 100px;
   }
   @keyframes stretchSkor {
