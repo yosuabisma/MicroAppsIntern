@@ -1,11 +1,11 @@
 <template>
   <div class="play-page">
-    <div  v-if="isFinish===false" class="scoreProc spanCornerRight">
+    <div  v-if="indexQuest<=10" class="scoreProc spanCornerRight">
       <h1>{{score}}</h1>
       <h5>/100</h5>
     </div>
-    <div v-if="quest1===true" class="quests question-1">
-      <h1>Pertanyaan 1</h1><br/>
+    <div v-if="indexQuest<=10" class="quests">
+      <h1>Pertanyaan {{indexQuest}}</h1><br/>
       <center>
         <div class="showQuest">
           <h3>{{questions[randomIndex].text}}</h3>
@@ -17,24 +17,24 @@
           <table>
             <tr>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest1=false;quest2=true;randomIndexNext();" class="answer">
+                <div v-on:click="checkAnswer(randomIndex, 0);indexQuest+=1;randomIndexNext();" class="answer">
                   <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
                 </div>
               </td>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest1=false;quest2=true;randomIndexNext();" class="answer">
+                <div v-on:click="checkAnswer(randomIndex, 1);indexQuest+=1;randomIndexNext();" class="answer">
                   <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
                 </div>
               </td>
             </tr>
             <tr>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest1=false;quest2=true;randomIndexNext();" class="answer">
+                <div v-on:click="checkAnswer(randomIndex, 2);indexQuest+=1;randomIndexNext();" class="answer">
                   <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
                 </div>
               </td>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest1=false;quest2=true;randomIndexNext();" class="answer">
+                <div v-on:click="checkAnswer(randomIndex, 3);indexQuest+=1;randomIndexNext();" class="answer">
                   <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
                 </div>
               </td>
@@ -42,440 +42,9 @@
           </table>
         </div>
       </center>
-      <center>
-        <div v-on:click="quest1=false;quest2=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
     </div>
 
-    <div v-if="quest2===true" class="quests question-2">
-      <h1>Pertanyaan 2</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest2=false;quest3=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest2=false;quest3=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest2=false;quest3=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest2=false;quest3=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest2=false;quest3=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest3===true" class="quests question-3">
-      <h1>Pertanyaan 3</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest3=false;quest4=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest3=false;quest4=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest3=false;quest4=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest3=false;quest4=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest3=false;quest4=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest4===true" class="quests question-4">
-      <h1>Pertanyaan 4</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest4=false;quest5=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest4=false;quest5=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest4=false;quest5=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest4=false;quest5=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest4=false;quest5=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest5===true" class="quests question-5">
-      <h1>Pertanyaan 5</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest5=false;quest6=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest5=false;quest6=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest5=false;quest6=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest5=false;quest6=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest5=false;quest6=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest6===true" class="quests question-6">
-      <h1>Pertanyaan 6</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest6=false;quest7=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest6=false;quest7=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest6=false;quest7=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest6=false;quest7=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest6=false;quest7=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest7===true" class="quests question-7">
-      <h1>Pertanyaan 7</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest7=false;quest8=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest7=false;quest8=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest7=false;quest8=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest7=false;quest8=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest7=false;quest8=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest8===true" class="quests question-8">
-      <h1>Pertanyaan 8</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest8=false;quest9=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest8=false;quest9=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest8=false;quest9=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest8=false;quest9=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest8=false;quest9=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest9===true" class="quests question-9">
-      <h1>Pertanyaan 9</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest9=false;quest10=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest9=false;quest10=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest9=false;quest10=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest9=false;quest10=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest9=false;quest10=true;">
-          <div class="buttonFinishTap" v-on:click="randomIndexNext()">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-    <div v-if="quest10===true" class="quests question-9">
-      <h1>Pertanyaan 10</h1><br/>
-      <center>
-        <div class="showQuest">
-          <h3>{{questions[randomIndex].text}}</h3>
-        </div>
-      </center>
-      <br/><br/>
-      <center>
-        <div class="answerList">
-          <table>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);quest10=false;isFinish=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);quest10=false;isFinish=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 2);quest10=false;isFinish=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[2].text}}</h1></center>
-                </div>
-              </td>
-              <td>
-                <div v-on:click="checkAnswer(randomIndex, 3);quest10=false;isFinish=true;randomIndexNext();" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[3].text}}</h1></center>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </center>
-      <center>
-        <div v-on:click="quest10=false;isFinish=true;">
-          <div class="buttonFinishTap" v-on:click="">
-            <b>Lewati</b>
-          </div>
-        </div>
-      </center>
-    </div>
-
-
-    <div class="skorAkhirTitle" v-if="isFinish===true">
+    <div class="skorAkhirTitle" v-if="indexQuest>10">
       <center>
         <h1>
           Selesai !
@@ -503,17 +72,7 @@
     data(){
       return{
         score:0,
-        quest1:true,
-        quest2:false,
-        quest3:false,
-        quest4:false,
-        quest5:false,
-        quest6:false,
-        quest7:false,
-        quest8:false,
-        quest9:false,
-        quest10:false,
-        isFinish:false,
+        indexQuest:1,
         randomIndex:Math.floor(Math.random() * Math.floor(20)),
         questions: [
                     {
