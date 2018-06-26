@@ -15,7 +15,8 @@
       <br/><br/>
       <center>
         <div class="stabilizer">
-          <div class="tap1" v-on:click="count1+=1;mod=count1%10;play;">
+          <div class="tap1" v-on:click="count1+=1;mod=count1%10;play();">
+              <audio ref="audioElm" src="./../assets/misc293.mp3"></audio>
             <h1 class="counterAnim">Tap!</h1>
           </div>
         </div>
@@ -54,7 +55,8 @@
       <br/><br/>
       <center>
         <div class="stabilizer">
-          <div class="tap2" v-on:click="count2+=1;mod=count2%10;">
+          <div class="tap2" v-on:click="count2+=1;mod=count2%10;play;">
+              <audio ref="audioElm" src="./../assets/misc293.mp3"></audio>
             <h1 class="counterAnim">Tap!</h1>
           </div>
         </div>
@@ -93,7 +95,8 @@
       <br/><br/>
       <center>
         <div class="stabilizer">
-          <div class="tap3" v-on:click="count3+=1;mod=count3%10;">
+          <div class="tap3" v-on:click="count3+=1;mod=count3%10;play;">
+              <audio ref="audioElm" src="./../assets/misc293.mp3"></audio>
             <h1 class="counterAnim">Tap!</h1>
           </div>
         </div>
@@ -132,7 +135,8 @@
       <br/><br/>
       <center>
         <div class="stabilizer">
-          <div class="tap4" v-on:click="count4+=1;mod=count4%10;">
+          <div class="tap4" v-on:click="count4+=1;mod=count4%10;play;">
+            <audio ref="audioElm" src="./../assets/misc293.mp3"></audio>
             <h1 class="counterAnim">Tap!</h1>
           </div>
         </div>
@@ -152,7 +156,7 @@
           <!-- End Tag Num of Taps Indivator-->
           <br/><br/>
           <div v-if="turn4<10" v-on:click="turn4+=1;isPlay1=true;isPlay4=false;count4=0;">
-            <audio ref="audioElm" src="./../assets/misc293.mp3"></audio>
+
             <div class="buttonFinishTap" v-on:click="checkMod()">
               <b>Next Player Turn</b>
             </div>
@@ -219,7 +223,7 @@
         'music': Audio
       },
       methods: {
-        play: function(event) {
+        play(event) {
           this.$refs.audioElm.play();
         },
         gotoPage(route) {

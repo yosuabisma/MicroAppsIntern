@@ -4,8 +4,7 @@
       <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
     </div>
     <div class="title">
-      <h1 class="size72"><b>TapTap</b></h1>
-      <h1 class="size36"><b>Truth or Dare</b></h1>
+      <center><h1 class="size72"><b>Hitung.in</b></h1></center>
     </div>
     <div class="bottomBtn">
       <center>
@@ -116,14 +115,14 @@
     border-radius:8px;
     padding: 10px 10px;
 
-    animation-name: stretch;
+    /* animation-name: stretch;
     animation-duration: 0.6s;
     animation-timing-function: ease-out;
     animation-delay: 0;
     animation-direction: alternate;
     animation-iteration-count: infinite;
     animation-fill-mode: none;
-    animation-play-state: running;
+    animation-play-state: running; */
     /*background: linear-gradient(-60deg, #ff2d55, #ff2d55, #5856ff, #5856ff);
     background-size: 1000% 1000%;
     -webkit-animation: Gradient 5s ease infinite;
