@@ -5,7 +5,7 @@
     </div>
     <div class="title">
       <h1 class="size72"><b>TapTap</b></h1>
-      <h1 class="size36"><b>Tap Battle</b></h1>
+      <h1 class="size36"><b>Tepok Nyamuk</b></h1>
     </div>
     <div class="bottomBtn">
       <center>

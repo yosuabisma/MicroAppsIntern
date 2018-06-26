@@ -1,6 +1,5 @@
 <template>
   <div>
-    <music></music>
   <div v-if="isBoom===false" class="game-4">
     <br/><br/>
     <div v-if="isPlay1===true&&turn1<=10" class="player-1">
@@ -15,8 +14,12 @@
       <br/><br/>
       <center>
         <div class="stabilizer">
+<<<<<<< HEAD
           <div class="tap1" v-on:click="count1+=1;mod=count1%10;play();">
               <audio ref="audioElm" src="./../assets/misc293.mp3"></audio>
+=======
+          <div class="tap1" v-on:click="count1+=1;mod=count1%10;">
+>>>>>>> 3bde633eeefa85bb2f2178fcf826724c76fe0211
             <h1 class="counterAnim">Tap!</h1>
           </div>
         </div>
@@ -156,7 +159,10 @@
           <!-- End Tag Num of Taps Indivator-->
           <br/><br/>
           <div v-if="turn4<10" v-on:click="turn4+=1;isPlay1=true;isPlay4=false;count4=0;">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3bde633eeefa85bb2f2178fcf826724c76fe0211
             <div class="buttonFinishTap" v-on:click="checkMod()">
               <b>Next Player Turn</b>
             </div>
@@ -193,8 +199,6 @@
   </div>
 </template>
 <script>
-  import Audio from './Audio.vue';
-
   export default {
       data(){
         return{
@@ -219,13 +223,13 @@
       computed:{
 
       },
-      components: {
-        'music': Audio
-      },
       methods: {
+<<<<<<< HEAD
         play(event) {
           this.$refs.audioElm.play();
         },
+=======
+>>>>>>> 3bde633eeefa85bb2f2178fcf826724c76fe0211
         gotoPage(route) {
           this.$router.push(route);
         },

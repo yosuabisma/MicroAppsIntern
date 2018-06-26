@@ -4,8 +4,7 @@
       <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
     </div>
     <div class="title">
-      <h1 class="size72"><b>TapTap</b></h1>
-      <h1 class="size36"><b>Tap Battle</b></h1>
+      <h1 class="size60"><b>Tebak Pola Angka</b></h1>
     </div>
     <div class="bottomBtn">
       <center>
@@ -29,6 +28,9 @@
   /*FONT*/
   .size72{
     font-size:72px;
+  }
+  .size60{
+    font-size:60px;
   }
   .size36{
     font-size:36px;
@@ -61,11 +63,12 @@
   .main-page {
     padding:30px 30px;
     color: #fff;
-    background: linear-gradient(-60deg, #133a7c, #133a7c, #081534, #081534);
+    background: linear-gradient(-60deg, #1abc9c, #1abc9c, #16a085, #16a085);
     background-size: 400% 400%;
     -webkit-animation: Gradient 5s ease infinite;
     -moz-animation: Gradient 5s ease infinite;
     animation: Gradient 5s ease infinite;
+    cursor:pointer;
     /*height: 640px;
     width: 360px;*/
   }
@@ -109,7 +112,7 @@
     margin-top:70px;
   }
   .bottomBtn{
-    margin-top: 286px;
+    margin-top: 250px;
   }
   .buttonPlay{
     color:#fff;
@@ -126,11 +129,6 @@
     animation-iteration-count: infinite;
     animation-fill-mode: none;
     animation-play-state: running;
-    /*background: linear-gradient(-60deg, #ff2d55, #ff2d55, #5856ff, #5856ff);
-    background-size: 1000% 1000%;
-    -webkit-animation: Gradient 5s ease infinite;
-    -moz-animation: Gradient 5s ease infinite;
-    animation: Gradient 5s ease infinite;*/
   }
   .buttonPlay:hover{
     background-color: #ff2d55;

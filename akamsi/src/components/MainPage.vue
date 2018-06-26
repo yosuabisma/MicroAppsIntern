@@ -4,8 +4,8 @@
       <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
     </div>
     <div class="title">
-      <h1 class="size72"><b>TapTap</b></h1>
-      <h1 class="size36"><b>Tap Battle</b></h1>
+      <h1 class="size60"><b>Akamsi</b></h1>
+      <h5 class="size36">Anak Kampung Sini</h5>
     </div>
     <div class="bottomBtn">
       <center>
@@ -29,6 +29,9 @@
   /*FONT*/
   .size72{
     font-size:72px;
+  }
+  .size60{
+    font-size:60px;
   }
   .size36{
     font-size:36px;
@@ -61,13 +64,12 @@
   .main-page {
     padding:30px 30px;
     color: #fff;
-    background: linear-gradient(-60deg, #133a7c, #133a7c, #081534, #081534);
+    background: linear-gradient(-60deg,  #0c2461,  #0c2461, #0a3d62,#0a3d62);
     background-size: 400% 400%;
     -webkit-animation: Gradient 5s ease infinite;
     -moz-animation: Gradient 5s ease infinite;
     animation: Gradient 5s ease infinite;
-    /*height: 640px;
-    width: 360px;*/
+    cursor:pointer;
   }
 
   @-webkit-keyframes Gradient {
@@ -109,12 +111,12 @@
     margin-top:70px;
   }
   .bottomBtn{
-    margin-top: 286px;
+    margin-top: 250px;
   }
   .buttonPlay{
     color:#fff;
     font-size:48px;
-    background-color: #cc2444;
+    background-color: #eb2f06;
     border-radius:8px;
     padding: 10px 10px;
 
@@ -126,27 +128,22 @@
     animation-iteration-count: infinite;
     animation-fill-mode: none;
     animation-play-state: running;
-    /*background: linear-gradient(-60deg, #ff2d55, #ff2d55, #5856ff, #5856ff);
-    background-size: 1000% 1000%;
-    -webkit-animation: Gradient 5s ease infinite;
-    -moz-animation: Gradient 5s ease infinite;
-    animation: Gradient 5s ease infinite;*/
   }
   .buttonPlay:hover{
-    background-color: #ff2d55;
+    background-color:#e55039;
   }
 
   @keyframes stretch {
     0% {
       transform: scale(.8);
-      background-color: #cc2444;
+      background-color: #eb2f06;
     }
     50% {
-      background-color: #cc2444;
+      background-color:#e55039;
     }
     100% {
       transform: scale(1);
-      background-color: #ff2d55;
+      background-color: #e55039;
     }
   }
 </style>
