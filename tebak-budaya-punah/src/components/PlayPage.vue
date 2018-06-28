@@ -40,14 +40,16 @@
             <tr>
               <td>
                 <div v-on:click="checkAnswer(randomIndex, 0);/*indexQuest+=1;randomIndexNext(); */" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
+                  <center><h2>{{questions[randomIndex].responses[0].text}}</h2></center>
                 </div>
                 <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[0].correct">Benar</h3></center>
                 <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[0].correct">Salah</h3></center>
               </td>
+            </tr>
+            <tr>
               <td>
                 <div v-on:click="checkAnswer(randomIndex, 1);/*indexQuest+=1;randomIndexNext(); */" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
+                  <center><h2>{{questions[randomIndex].responses[1].text}}</h2></center>
                 </div>
                 <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[1].correct">Benar</h3></center>
                 <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[1].correct">Salah</h3></center>
@@ -82,137 +84,85 @@
         score:0,
         isAnswered: false,
         indexQuest:1,
-        randomIndex:Math.floor(Math.random() * Math.floor(10)),
+        randomIndex:Math.floor(Math.random() * Math.floor(5)),
         questions: [
                     {
                       link: "./../src/assets/mapasilaga.jpg",
-                      isPictures: true,
+                      type_id: 1,
                       responses: [
-                        {text: 'Toraja', correct: true},
-                        {text: 'Gowa', correct: false}
+                        {text: 'Mapasilaga Tedong', correct: true},
+                        {text: 'Tabuik', correct: false}
+                      ],
+                      hints: [
+                        "2 ekor kerbau berjenis bule atau lumpur dipertandingkan",
+                        "Saling adu kekuatan, dan setelah itu baru dipotong untuk persembahan",
+                        "Perayaan ini hanya diadakan ketika ada kematian yang menimpa salah seorang suku"
                       ]
                     },
                     {
                       link: "./../src/assets/tabuik.jpg",
-                      isPictures: true,
+                      type_id: 1,
                       responses: [
-                        {text: 'Minang', correct: true},
-                        {text: 'Toraja', correct: false}
+                        {text: 'Tabuik', correct: true},
+                        {text: 'Pemakaman Suku Minahasa', correct: false}
+                      ],
+                      hints: [
+                        "Mengusung jenazah",
+                        "Diadakan untuk memperingati Asyura pada 10 muharram. Di mana Imam Husain yang merupakan cucu Nabi Muhammad wafat.",
+                        "Di sini biasanya masyarakat lokal akan menampilkan kembali pertempuran Karbala.",
+                        "Diadakan di pinggir pantai pariaman"
                       ]
                     },
                     {
-                      link: "./../src/assets/tiwah.jpg",
-                      isPictures: true,
+                      link: "./../src/assets/pemakaman-minahasa.jpg",
+                      type_id: 1,
                       responses: [
-                        {text: 'Baduy', correct: false},
-                        {text: 'Dayak', correct: true}
+                        {text: 'Rambu Solo', correct: false},
+                        {text: 'Pemakaman Suku Minahasa', correct: true}
+                      ],
+                      hints: [
+                        "Tujuan dari tradisi ini adalah untuk mengantarkan roh leluhur sanak saudara yang meninggal menuju ke alam baka.",
+                        "Memindahkan sisa jasad dari liang kubur menuju tempat yang disebut dengan Sandung",
+                        "Tak cuma posisi duduk, arahnya juga harus menghadap utara"
                       ]
                     },
                     {
-                      link: "./../src/assets/palang-pintu.jpg",
-                      isPictures: true,
+                      link: "./../src/assets/iki-palek.jpg",
+                      type_id: 1,
                       responses: [
-                        {text: 'Madura', correct: false},
-                        {text: 'Betawi', correct: true}
+                        {text: 'Rambu Solo', correct: false},
+                        {text: 'Iki Palek', correct: true}
+                      ],
+                      hints: [
+                        "Dilakukan oleh Suku Dani",
+                        "Pemotongan jari yang dilakukan sebagai bentuk kesediaan karena ditinggal anggota keluarga"
                       ]
                     },
                     {
-                      link: "./../src/assets/batombe.jpg",
-                      isPictures: true,
+                      link: "./../src/assets/",
+                      type_id: 1,
                       responses: [
-                        {text: 'Minang', correct: true},
-                        {text: 'Batak', correct: false}
+                        {text: 'Basapa', correct: false},
+                        {text: 'Batombe', correct: true}
+                      ],
+                      hints: [
+                        "Masing-masing orang diharuskan untuk melantunkan pantun",
+                        "Biasanya diadakan saat sebuah rumah selesai dibangun",
+                        "Tujuannnya sendiri untuk menghibur orang yang bekerja agar kembali semangat"
                       ]
-                    },
-                    {
-                      link: "./../src/assets/lompat-batu.jpg",
-                      isPictures: true,
-                      responses: [
-                        {text: 'Nias', correct: true},
-                        {text: 'Batak', correct: false}
-                      ]
-                    },
-                    {
-                      link: "./../src/assets/kremasi.jpg",
-                      isPictures: true,
-                      responses: [
-                        {text: 'Toraja', correct: false},
-                        {text: 'Bali', correct: true}
-                      ]
-                    },
-                    {
-                      link: "./../src/assets/injek-telur.jpg",
-                      isPictures: true,
-                      responses: [
-                        {text: 'Madura', correct: false},
-                        {text: 'Jawa', correct: true}
-                      ]
-                    },
-                    {
-                      link: "./../src/assets/midodareni.jpg",
-                      isPictures: true,
-                      responses: [
-                        {text: 'Sunda', correct: false},
-                        {text: 'Jawa', correct: true}
-                      ]
-                    },
-                    {
-                      link: "Anak pertama tidak boleh menikah dengan anak nomor tiga.",
-                      isPictures: false,
-                      responses: [
-                        {text: 'Jawa', correct: true},
-                        {text: 'Sunda', correct: false}
-                      ]
-                    },
-                    {
-                      link: "Tidak boleh memakai baju merah saat melayat.",
-                      isPictures: false,
-                      responses: [
-                        {text: 'Madura', correct: false},
-                        {text: 'Jawa', correct: true}
-                      ]
-                    },
-                    {
-                      link: "Pernikahan pada siang hari bukanlah waktu yang baik.",
-                      isPictures: false,
-                      responses: [
-                        {text: 'Aceh', correct: true},
-                        {text: 'Minang', correct: false}
-                      ]
-                    },
-                    {
-                      link: "Pernikahan pada siang hari bukanlah waktu yang baik.",
-                      isPictures: false,
-                      responses: [
-                        {text: 'Aceh', correct: true},
-                        {text: 'Minang', correct: false}
-                      ]
-                    },
-                    {
-                      link: "Pengantin yang berwajah kusam dan terlihat gelap di hari pernikahan harus melihat pantat periuk atau wajan ",
-                      isPictures: false,
-                      responses: [
-                        {text: 'Aceh', correct: true},
-                        {text: 'Batak', correct: false}
-                      ]
-                    },
-                    {
-                      link: "Rumah tidak boleh menghadap ke timur.",
-                      isPictures: false,
-                      responses: [
-                        {text: 'Jawa', correct: true},
-                        {text: 'Minang', correct: false}
-                      ]
-                    },
-                    {
-                      link: "Dilarang Membakar Terong.",
-                      isPictures: false,
-                      responses: [
-                        {text: 'Banjar', correct: true},
-                        {text: 'Bugis', correct: false}
-                      ]
-                    },
-                  ] /*16 Pertanyaan*/
+                    }
+                    // {
+                    //   link: "./../src/assets/",
+                    //   type_id: 1,
+                    //   responses: [
+                    //     {text: , correct: false},
+                    //     {text: , correct: true}
+                    //   ],
+                    //   hints: [
+                    //
+                    //   ]
+                    // },
+                  ] /*5 Pertanyaan*/
       }
     },
     methods: {
@@ -220,7 +170,7 @@
         this.$router.push(route);
       },
       randomIndexNext(){
-        this.randomIndex=Math.floor(Math.random() * Math.floor(10));
+        this.randomIndex=Math.floor(Math.random() * Math.floor(5));
       },
       checkAnswer(randomIndex, index) {
         if(this.questions[randomIndex].responses[index].correct===true){
@@ -319,7 +269,7 @@
     padding: 5px 5px;
   }
   .answer{
-    width:130px;
+    width:200px;
     background-color: #1dd1a1;
     border-radius: 8px;
     border: 2px solid #1dd1a1;

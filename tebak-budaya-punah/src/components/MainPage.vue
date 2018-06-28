@@ -4,10 +4,7 @@
       <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
     </div>
     <div class="title">
-      <center>
-        <img src="./../assets/tebak-budaya.svg" />
-        <h1 class="size60">Tebak Budaya</h1>
-      </center>
+      <h1 class="size60"><b>Tebak Budaya Punah</b></h1>
     </div>
     <div class="bottomBtn">
       <center>
@@ -62,6 +59,7 @@
   .height2{
     line-height: 22.5px;
   }
+
   .main-page {
     padding:30px 30px;
     color: #fff;
@@ -74,9 +72,7 @@
     /*height: 640px;
     width: 360px;*/
   }
-  .title img {
-    height: 250px;
-  }
+
   @-webkit-keyframes Gradient {
     0% {
       background-position: 0% 50%
@@ -116,7 +112,7 @@
     margin-top:70px;
   }
   .bottomBtn{
-    margin-top: 120px;
+    margin-top: 250px;
   }
   .buttonPlay{
     color:#fff;
