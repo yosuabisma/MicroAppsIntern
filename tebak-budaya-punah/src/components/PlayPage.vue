@@ -187,6 +187,11 @@
       refresh(){
         location.reload();
       }
+    },
+    computed: {
+      randomPosition() {
+        arr = [0,1]
+      }
     }
   }
 </script>

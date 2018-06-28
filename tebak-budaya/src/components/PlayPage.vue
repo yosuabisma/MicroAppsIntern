@@ -39,18 +39,18 @@
           <table>
             <tr>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);/*indexQuest+=1;randomIndexNext(); */" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[0].text}}</h1></center>
+                <div v-on:click="checkAnswer(randomIndex, randomPosition[0]);/*indexQuest+=1;randomIndexNext(); */" class="answer">
+                  <center><h1>{{questions[randomIndex].responses[randomPosition[0]].text}}</h1></center>
                 </div>
-                <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[0].correct">Benar</h3></center>
-                <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[0].correct">Salah</h3></center>
+                <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[randomPosition[0]].correct">Benar</h3></center>
+                <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[randomPosition[0]].correct">Salah</h3></center>
               </td>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);/*indexQuest+=1;randomIndexNext(); */" class="answer">
-                  <center><h1>{{questions[randomIndex].responses[1].text}}</h1></center>
+                <div v-on:click="checkAnswer(randomIndex, randomPosition[1]);/*indexQuest+=1;randomIndexNext(); */" class="answer">
+                  <center><h1>{{questions[randomIndex].responses[randomPosition[1]].text}}</h1></center>
                 </div>
-                <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[1].correct">Benar</h3></center>
-                <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[1].correct">Salah</h3></center>
+                <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[randomPosition[1]].correct">Benar</h3></center>
+                <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[randomPosition[1]].correct">Salah</h3></center>
               </td>
             </tr>
           </table>
@@ -76,6 +76,8 @@
   </div>
 </template>
 <script>
+  import shuffle from 'shuffle-array';
+
   export default{
     data(){
       return{
@@ -215,6 +217,9 @@
                   ] /*16 Pertanyaan*/
       }
     },
+    components: {
+      'shuffle': shuffle
+    },
     methods: {
       gotoPage(route) {
         this.$router.push(route);
@@ -236,6 +241,13 @@
       },
       refresh(){
         location.reload();
+      }
+    },
+    computed: {
+      randomPosition() {
+        var arr = [0,1];
+        shuffle(arr);
+        return arr;
       }
     }
   }
