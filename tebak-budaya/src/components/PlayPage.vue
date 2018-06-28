@@ -238,6 +238,7 @@
         this.indexQuest += 1;
         this.isAnswered = false;
         this.randomIndexNext();
+        shuffle(this.randomPosition);
       },
       refresh(){
         location.reload();

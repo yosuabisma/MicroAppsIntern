@@ -29,8 +29,7 @@
       <center>
         <div class="showQuest">
           <!-- <h3>{{questions[randomIndex].text}}</h3> -->
-          <img v-if="questions[randomIndex].isPictures==true" v-bind:src="'' + questions[randomIndex].link" class="question-set" />
-          <h3 v-else>{{questions[randomIndex].link}}</h3>
+          <img v-bind:src="'' + questions[randomIndex].link" class="question-set" />
         </div>
       </center>
       <br/><br/>
@@ -39,20 +38,20 @@
           <table>
             <tr>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 0);/*indexQuest+=1;randomIndexNext(); */" class="answer">
-                  <center><h2>{{questions[randomIndex].responses[0].text}}</h2></center>
+                <div v-on:click="checkAnswer(randomIndex, randomPosition[0]);/*indexQuest+=1;randomIndexNext(); */" class="answer">
+                  <center><h2>{{questions[randomIndex].responses[randomPosition[0]].text}}</h2></center>
                 </div>
-                <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[0].correct">Benar</h3></center>
-                <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[0].correct">Salah</h3></center>
+                <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[randomPosition[0]].correct">Benar</h3></center>
+                <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[randomPosition[0]].correct">Salah</h3></center>
               </td>
             </tr>
             <tr>
               <td>
-                <div v-on:click="checkAnswer(randomIndex, 1);/*indexQuest+=1;randomIndexNext(); */" class="answer">
-                  <center><h2>{{questions[randomIndex].responses[1].text}}</h2></center>
+                <div v-on:click="checkAnswer(randomIndex, randomPosition[1]);/*indexQuest+=1;randomIndexNext(); */" class="answer">
+                  <center><h2>{{questions[randomIndex].responses[randomPosition[1]].text}}</h2></center>
                 </div>
-                <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[1].correct">Benar</h3></center>
-                <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[1].correct">Salah</h3></center>
+                <center><h3 style="color: #20FE20;" v-if="isAnswered && questions[randomIndex].responses[randomPosition[1]].correct">Benar</h3></center>
+                <center><h3 style="color: #FE2020;" v-if="isAnswered && !questions[randomIndex].responses[randomPosition[1]].correct">Salah</h3></center>
               </td>
             </tr>
           </table>
@@ -78,6 +77,8 @@
   </div>
 </template>
 <script>
+  import shuffle from 'shuffle-array';
+
   export default{
     data(){
       return{
@@ -139,7 +140,7 @@
                       ]
                     },
                     {
-                      link: "./../src/assets/",
+                      link: "./../src/assets/batombe.jpg",
                       type_id: 1,
                       responses: [
                         {text: 'Basapa', correct: false},
@@ -164,6 +165,9 @@
                     // },
                   ] /*5 Pertanyaan*/
       }
+    },
+    components: {
+      'shuffle': shuffle
     },
     methods: {
       gotoPage(route) {
@@ -190,7 +194,9 @@
     },
     computed: {
       randomPosition() {
-        arr = [0,1]
+        var arr = [0,1];
+        shuffle(arr);
+        return arr;
       }
     }
   }
