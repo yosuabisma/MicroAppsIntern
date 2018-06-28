@@ -4,8 +4,12 @@
       <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
     </div>
     <div class="title">
-      <h1 class="size60"><b>Akamsi</b></h1>
-      <h5 class="size36">Anak Kampung Sini</h5>
+      <center>
+        <br/><br/>
+        <img v-bind:src="'./../src/assets/img/logo-akamsi/logo-akamsi.svg'" height="160px"/>
+        <h1 class="size60 yellow"><b>Akamsi</b></h1>
+        <h5 class="size24">Anak Kampung Sini</h5>
+      </center>
     </div>
     <div class="bottomBtn">
       <center>
@@ -47,6 +51,9 @@
   }
   .blue{
     color: #47a8e5;
+  }
+  .yellow{
+    color:yellow;
   }
   .spanCornerRight{
     float: right;
@@ -111,7 +118,7 @@
     margin-top:70px;
   }
   .bottomBtn{
-    margin-top: 250px;
+    margin-top: 120px;
   }
   .buttonPlay{
     color:#fff;

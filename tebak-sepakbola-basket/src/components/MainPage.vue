@@ -5,10 +5,12 @@
     </div>
 
     <div class="title">
-      <br/><br/>
-      <!--center><img v-bind:src="'./../src/assets/img/logo-tebak-bahasa.svg'" height="250px"/></center-->
-      <h1 class="white size60"><b>Tebak Pemain</b></h1>
-      <h1 class="white size36"><b>Sepak Bola / Basket</b></h1>
+      <center>
+        <br/><br/>
+        <img v-bind:src="'./../src/assets/img/Group 26.svg'" height="160px"/>
+        <h1 class="yellow size36"><b>Tebak Tokoh</b></h1>
+        <h1 class="white size24"><b>Sepak Bola vs Basket</b></h1>
+      </center>
     </div>
     <div class="bottomBtn">
       <center>
@@ -47,6 +49,9 @@
   }
   .white{
     color:#f2f2f2;
+  }
+  .yellow{
+    color:yellow;
   }
   .blue{
     color: #47a8e5;
@@ -115,7 +120,7 @@
     margin-top:100px;
   }
   .bottomBtn{
-    margin-top: 130px;
+    margin-top: 120px;
   }
   .buttonPlay{
     color:#fff;
