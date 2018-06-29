@@ -35,8 +35,8 @@
     <div v-if="indexQuest<=10" class="quests">
       <h1>Pertanyaan {{indexQuest}}</h1><br/>
       <center>
-        <h2 v-if="questions[randomIndex].type_id===1" class="question-what">Tradisi apa ini?</h2>
-        <h2 v-else-if="questions[randomIndex].type_id===2" class="question-what">Suku apa ini?</h2>
+        <h2 v-if="questions[randomIndex].type_id===1" class="question-what">Siapa nama pahlawan ini?</h2>
+        <h2 v-else class="question-what">Siapa nama pahlawan ini?</h2>
         <div class="showQuest">
           <!-- <h3>{{questions[randomIndex].text}}</h3> -->
           <img v-bind:src="'' + questions[randomIndex].link" class="question-set" />
@@ -79,14 +79,11 @@
       </center>
     </div>
 
-    <!-- <div class="navigation">
+    <div class="navigation">
       <div class="spanCornerLeft">
         <h1 class="size20" v-on:click="gotoPage('/')"><b>Home</b></h1>
       </div>
-      <div class="spanCornerRight">
-        <h1 class="size20" v-on:click="refresh()"><b></b>Restart</h1>
-      </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -102,130 +99,127 @@
         randomIndex:Math.floor(Math.random() * Math.floor(10)),
         questions: [
                     {
-                      link: "./../src/assets/mapasilaga.jpg",
+                      link: "./../src/assets/ki-hajar-dewantara.jpg",
                       type_id: 1,
                       responses: [
-                        {text: 'Mapasilaga Tedong', correct: true},
-                        {text: 'Tabuik', correct: false}
+                        {text: 'Ki Hajar Dewantara', correct: true},
+                        {text: 'H.O.S. Cokroaminoto', correct: false}
                       ],
                       hints: [
-                        "2 ekor kerbau berjenis bule atau lumpur dipertandingkan",
-                        "Saling adu kekuatan, dan setelah itu baru dipotong untuk persembahan",
-                        "Perayaan ini hanya diadakan ketika ada kematian yang menimpa salah seorang suku"
+                        "Dikenal dengan Bapak Pendidikan Nasional"
                       ]
                     },
                     {
-                      link: "./../src/assets/tabuik.jpg",
+                      link: "./../src/assets/sam-ratulangi.jpg",
                       type_id: 1,
                       responses: [
-                        {text: 'Tabuik', correct: true},
-                        {text: 'Pemakaman Suku Minahasa', correct: false}
+                        {text: 'Sam Ratulangi', correct: true},
+                        {text: 'Tan Malaka', correct: false}
                       ],
                       hints: [
-                        "Mengusung jenazah",
-                        "Diadakan untuk memperingati Asyura pada 10 muharram. Di mana Imam Husain yang merupakan cucu Nabi Muhammad wafat.",
-                        "Di sini biasanya masyarakat lokal akan menampilkan kembali pertempuran Karbala.",
-                        "Diadakan di pinggir pantai pariaman"
+                        "Terkenal dengan filsafat ‘Si tou timou tumou tou‘ yang berarti ‘manusia baru dapat disebut sebagai manusia, jika sudah dapat memanusiakan manusia’."
                       ]
                     },
                     {
-                      link: "./../src/assets/pemakaman-minahasa.jpg",
+                      link: "./../src/assets/m-husni-thamrin.jpg",
                       type_id: 1,
                       responses: [
-                        {text: 'Rambu Solo', correct: false},
-                        {text: 'Pemakaman Suku Minahasa', correct: true}
+                        {text: 'M. Husni Thamrin', correct: true},
+                        {text: 'Pattimura', correct: false}
                       ],
                       hints: [
-                        "Tujuan dari tradisi ini adalah untuk mengantarkan roh leluhur sanak saudara yang meninggal menuju ke alam baka.",
-                        "Memindahkan sisa jasad dari liang kubur menuju tempat yang disebut dengan Sandung",
-                        "Tak cuma posisi duduk, arahnya juga harus menghadap utara"
+                        "wajahnya terpampang di mata uang kertas Rp 2.000."
                       ]
                     },
                     {
-                      link: "./../src/assets/iki-palek.jpg",
+                      link: "./../src/assets/sultan-hassanudin.jpg",
                       type_id: 1,
                       responses: [
-                        {text: 'Rambu Solo', correct: false},
-                        {text: 'Iki Palek', correct: true}
+                        {text: 'Sultan Hassanudin', correct: true},
+                        {text: 'Pattimura', correct: false}
                       ],
                       hints: [
-                        "Dilakukan oleh Suku Dani",
-                        "Pemotongan jari yang dilakukan sebagai bentuk kesediaan karena ditinggal anggota keluarga"
+                        "Terkenal dengan sebutan “Ayam Jantan dari Timur”"
                       ]
                     },
                     {
-                      link: "./../src/assets/batombe.jpg",
+                      link: "./../src/assets/tirtayasa.jpg",
                       type_id: 1,
                       responses: [
-                        {text: 'Basapa', correct: false},
-                        {text: 'Batombe', correct: true}
+                        {text: 'Sultan Raden Agung Tirtayasa', correct: true},
+                        {text: 'Sri Sultan Hamengkubuwono', correct: false}
                       ],
                       hints: [
-                        "Masing-masing orang diharuskan untuk melantunkan pantun",
-                        "Biasanya diadakan saat sebuah rumah selesai dibangun",
-                        "Tujuannnya sendiri untuk menghibur orang yang bekerja agar kembali semangat"
+                        "Pangeran Surya yang merupakan Sultan Banten ke-6, berasal dari Banten. Siapakah nama pahlawan ini?"
                       ]
                     },
                     {
-                      link: "./../src/assets/suku-sakai.jpg",
-                      type_id: 2,
+                      link: "./../src/assets/tirtayasa.jpg",
+                      type_id: 1,
                       responses: [
-                        {text: 'Suku Sakai', correct: false},
-                        {text: 'Suku Akit', correct: true}
+                        {text: 'Sultan Raden Agung Tirtayasa', correct: true},
+                        {text: 'Hamengkubuwono', correct: false}
                       ],
                       hints: [
-                        "Merupakan komunitas pedalaman asli yang menetap di daratan Riau",
-                        "Percampuran orang Wedoid dan orang Melayu Tua"
+                        "Pangeran Surya yang merupakan Sultan Banten ke-6, berasal dari Banten. Siapakah nama pahlawan ini?"
                       ]
                     },
                     {
-                      link: "./../src/assets/suku-togutil.jpg",
-                      type_id: 2,
+                      link: "./../src/assets/hamengkubuwono.jpg",
+                      type_id: 1,
                       responses: [
-                        {text: 'Suku Lingon', correct: false},
-                        {text: 'Suku Togutil', correct: true}
+                        {text: 'Pakubuwono', correct: false},
+                        {text: 'Hamengkubuwono', correct: true}
                       ],
                       hints: [
-                        "Dikenal juga dengan Suku Tobelo Dalam, mereka merupakan kelompok etnis yang tinggal di hutan.",
-                        "Tinggal secara nomaden alias berpindah-pindah dari satu hutan ke hutan yang lain, di sekitar Totodoku."
+                        "merupakan pendiri sekaligus raja pertama Kesultanan Yogyakarta"
                       ]
                     },
                     {
-                      link: "./../src/assets/suku-samin.jpg",
-                      type_id: 2,
+                      link: "./../src/assets/hamengkubuwono.jpg",
+                      type_id: 1,
                       responses: [
-                        {text: 'Suku Dayak', correct: false},
-                        {text: 'Suku Samin', correct: true}
+                        {text: 'Pakubuwono', correct: false},
+                        {text: 'Hamengkubuwono', correct: true}
                       ],
                       hints: [
-                        "Memberikan ajaran berupa sedulur siker, yang berarti mengorbankan semangat perlawanan pada Belanda diluar kekerasan.",
-                        "Suku ini juga dikenal sebagai suku yang mengisolasi diri hingga pada tahun 70-an mereka baru tahu jika Indonesia telah merdeka."
+                        "Merupakan pendiri sekaligus raja pertama Kesultanan Yogyakarta"
                       ]
                     },
                     {
-                      link: "./../src/assets/suku-hutan.jpg",
-                      type_id: 2,
+                      link: "./../src/assets/tuanku-imam-bonjol.jpg",
+                      type_id: 1,
                       responses: [
-                        {text: 'Suku Batak', correct: false},
-                        {text: 'Suku Hutan', correct: true}
+                        {text: 'Tuanku Imam Bonjol', correct: true},
+                        {text: 'Pangeran Diponegoro', correct: false}
                       ],
                       hints: [
-                        "Merupakan kelompok etnis yang tinggal di Dusun Sungai Sadap, Kelurahan Rempang, Kecamatan Galang, Batam, Kepulauan Riau."
+                        "Pemimpin perang Padri"
                       ]
                     },
                     {
-                      link: "./../src/assets/suku-kajang.jpg",
-                      type_id: 2,
+                      link: "./../src/assets/pattimura.jpg",
+                      type_id: 1,
                       responses: [
-                        {text: 'Suku Dani', correct: false},
-                        {text: 'Suku Kajang', correct: true}
+                        {text: 'Pattimura', correct: true},
+                        {text: 'Djunda Kartawidjaja', correct: false}
                       ],
                       hints: [
-                        "Biasa disebut sebagai masyarakat Ammatoa atau masyarakat Patuntung atau masyarakat kamase-masea.",
-                        "Kelompok masyarakat lokal yang berdiam di Desa Tana Toa, daerah Possi Tana dan wilayah Balagana, Kabupaten Bulukumba, Provinsi Sulawesi Selatan"
+                        "Wajahnya terpampang di mata uang kertas lama Rp 1.000"
                       ]
                     },
-
+                    {
+                      link: "./../src/assets/pangeran-diponegoro.jpg",
+                      type_id: 1,
+                      responses: [
+                        {text: 'Pattimura', correct: true},
+                        {text: 'Djunda Kartawidjaja', correct: false}
+                      ],
+                      hints: [
+                        "Biasanya difoto dengan pose naik quda",
+                        "Ditangkap oleh Belanda dan diasingkan di Makassar"
+                      ]
+                    },
                     // {
                     //   link: "./../src/assets/",
                     //   type_id: 1,
@@ -292,7 +286,7 @@
     height: 680px;
     width: 360px;
     cursor:pointer;
-    background-color: #A52A2A;
+    background-color: #585858;
     color: #fff;
   }
   .buttonFinishTap{
@@ -344,11 +338,11 @@
   .showQuest{
     margin-top: 20px;
     font-size: 18px;
-    background-color: #d5f5e3;
+    background-color: #A8A8A8;
     border-radius: 10px;
     padding: 20px 20px;
     height: 250px;
-    color: #186a3b;
+    color: #fff;
   }
   .answerList {
     margin-top: -20px;
