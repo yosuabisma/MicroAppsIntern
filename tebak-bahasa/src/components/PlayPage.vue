@@ -371,7 +371,7 @@
     height: 640px;
     width: 360px;
     cursor:pointer;
-    background-color: #2c2c54;
+    background-color: #bf5f82;
     color: #fff;
   }
   .buttonFinishTap{
@@ -419,7 +419,7 @@
     font-size: 30px;
     padding: 10px 10px;
     height: 100px;
-    color: #ffb142;
+    color: #fff;
     border-bottom: 3px solid #fff;
   }
   td{
@@ -455,8 +455,8 @@
     float:right;
   }
   .scoreProc{
-    background-color: #706fd3;
-
+    background-color: #fff;
+    color: #f48fb1;
     padding: 10px 20px;
     margin-top: -30px;
     margin-right: -30px;
@@ -488,9 +488,9 @@
     padding: 10px 10px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    background-color: #474787;
+    background-color: #ff94c2;
   }
   .btnPetunjuk:hover{
-    background-color: #474787;
+    background-color: #ff94c2;
   }
 </style>

@@ -142,15 +142,15 @@
   }
   .vsuw{
     background-color: #e6dbac;
-    color:#d6b85a;
+    color:#5c442f;
   }
   .suw{
     background-color: #eedc9a;
-    color:#d6b85a;
+    color:#bc3636;
   }
   .uw{
     background-color: #e9e076;
-    color:#d6b85a;
+    color:#87654f;
   }
   .nw{
     background-color: #3cb043;
