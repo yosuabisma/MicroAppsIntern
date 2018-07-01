@@ -10,7 +10,13 @@
         <img src="./../assets/wrong.png" class="notif-pic" />
       </center>
     </div>
-    <b-container fluid>
+    <b-container fluid class="probs">
+      <b-row>
+        <div  v-if="indexQuest<=10" class="scoreProc spanCornerRight">
+          <h1>{{score}}</h1>
+          <h5>/100</h5>
+        </div>
+      </b-row>
       <b-row>
         <center>
           <div class="problem-set">
@@ -68,7 +74,7 @@
       return {
         proset1: Math.floor(Math.random() * Math.floor(100)),
         proset2: Math.floor(Math.random() * Math.floor(100)),
-
+        indexQuest: 1,
         showResult: false,
         isCorrect: false,
         isWrong: false,
@@ -116,6 +122,7 @@
   .problem {
     width: 360px;
     height: 640px;
+    padding-top: 60px;
     background-image: url('./../assets/mosaic.jpg');
     background-size: cover;
   }
@@ -134,6 +141,21 @@
     height: 120px;
   }
 
+  .spanCornerRight{
+    float:right;
+  }
+  .scoreProc{
+    background-color: #cc2444;
+    padding: 10px 20px;
+    margin-top: -60px;
+    /* margin-right: -30px; */
+  }
+  /* .probs {
+    margin-top: 50px;
+  } */
+  /* b-row {
+    margin-top: 30px;
+  } */
   .problem-set {
     width: 335px;
     height: 120px;
