@@ -1,29 +1,41 @@
 <template>
   <div class="play-page">
-    <div class="titlePlay">
+    <!--div v-if="inputOK===false" class="titlePlay">
       <h1 class="pink">Kalkulator Cinta 💑</h1>
       <h4 class="pink">Hitung Peluang Cintamu</h4>
-    </div>
+    </div-->
     <br/>
     <br/>
     <div class="calculation">
       <center>
-        <h3 class="gray">Nama Kamu</h3><br/>
-        <input class="inputName" v-model="name1"/>
+        <!--h3 class="gray">Nama Kamu</h3><br/-->
+        <input class="inputName" v-model="name1" placeholder="Nama Kamu"/>
         <br/><br/><br/>
         <div class="loveMeter">
           <br/><br/><br/><br/>
-          <h2>{{code}} %</h2>
+          <!--h2>{{code}} %</h2-->
+          <h2><animated-number
+          :value="code"
+          :formatValue="formatToPrice"
+          :duration="2000"
+          /></h2>
         </div>
         <br/><br/><br/>
-        <h3 class="gray">Nama Doi</h3>
-        <br/>
-        <input class="inputName" v-model="name2"/>
+        <!--h3 class="gray">Nama Pasanganmu</h3><br/-->
+        <input class="inputName" v-model="name2" placeholder="Nama Pasanganmu"/>
         <br/><br/><br/>
-
         <div class="calculate" v-on:click="calculateLove()">
           <b>Persentase Cintamu</b>
         </div>
+        <br/><br/>
+        <center>
+          <div v-if="inputOK===true" class="titlePlay2">
+            <img v-if="code>=0&&code<25" v-bind:src="'./../src/assets/img/minus.png'" height="180px"/>
+            <img v-if="code>=25&&code<50" v-bind:src="'./../src/assets/img/25-50.png'" height="180px"/>
+            <img v-if="code>=50&&code<90" v-bind:src="'./../src/assets/img/diatas 50.png'" height="180px"/>
+            <img v-if="code>=90&&code<100" v-bind:src="'./../src/assets/img/90-100.png'" height="180px"/>
+          </div>
+        </center>
       </center>
     </div>
     <br/><br/>
@@ -32,11 +44,7 @@
   </div>
 </template>
 <script>
-  import vueSlider from 'vue-slider-component';
-  /*import hashCode from 'js-hash-code';*/
-  /*var obj = document.getElementById('input1');
-  var hashcode = hash(obj);
-  alert(hashcode);*/
+import AnimatedNumber from "animated-number-vue";
   export default {
     data(){
       return{
@@ -44,14 +52,18 @@
         name2:'',
         code:0,
         loveScore:0,
+        inputOK:false,
       }
     },
     components: {
-      vueSlider
+      AnimatedNumber
     },
     methods: {
       gotoPage(route) {
         this.$router.push(route);
+      },
+      formatToPrice(value) {
+        return `${value.toFixed(0)} %`;
       },
       calculateLove() {
         var sum1 = 0;
@@ -67,6 +79,7 @@
           j++;
         }
         this.code = (sum1 + sum2)%100;
+        this.inputOK=true;
       }
 
     }
@@ -89,6 +102,10 @@
     color:#fff;
   }
 
+  /*.titlePlay2{
+    background-color: #52969e;
+    padding: 10px 10px;
+  }*/
   .loveMeter{
     background-image: url("loveMeter.png");
     height: 180px;
@@ -101,7 +118,8 @@
   }
   .inputName{
     border: none;
-
+    text-align: center;
+    font-weight: bold;
     font-size: 28px;
     border-bottom: 3px solid #e04f5f;
     height: 50px;
@@ -120,11 +138,4 @@
   .calculate:hover{
     background-color: #ff2d55;
   }
-  /*.calculation{
-    padding: 16px 16px;
-    background-color: #fff;
-    border: 2px solid #e04f5f;
-    color:#e04f5f;
-    border-radius:8px;
-  }*/
 </style>
