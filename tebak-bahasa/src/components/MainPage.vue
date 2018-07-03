@@ -11,7 +11,7 @@
     <div class="bottomBtn">
       <center>
         <div class="buttonPlay" v-on:click="gotoPage('/play')">
-          <center><img v-bind:src="'./../src/assets/img/Play_White.svg'" height="60px"/></center>
+          <center><img v-bind:src="'./../src/assets/img/Play_White.svg'" width="60px" height="50px"/></center>
         </div>
       </center>
     </div>

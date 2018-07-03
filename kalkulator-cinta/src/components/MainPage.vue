@@ -3,22 +3,27 @@
     <div class="about">
       <img v-on:click="gotoPage('/about')" class="spanCornerLeft" v-bind:src="'./../src/assets/img/Information_White.svg'" height="30px"/>
     </div>
-
-    <div class="title">
-      <br/><br/>
-      <center>
-        <img v-bind:src="'./../src/assets/img/logo-kalkulator cinta.svg'" height="200px"/>
-        <br/>
-        <h1 style="color:#bf5f82"><span>Kalkulator</span> Cinta</h1>
-      </center>
-    </div>
-    <div class="bottomBtn">
-      <center>
-        <div class="buttonPlay" v-on:click="gotoPage('/play')">
-          <center><img v-bind:src="'./../src/assets/img/Play_White.svg'" width="60px" height="50px"/></center>
-        </div>
-      </center>
-    </div>
+    <br/><br/><br/>
+    <img v-bind:src="'./../src/assets/img/logoLoveTester.png'" height="70px"/>
+    <br/>
+    <!--table>
+      <tr>
+        <td>
+          <img v-bind:src="'./../src/assets/img/Group 23.svg'" width="220px" height="320px"/>
+        </td>
+        <td>
+          <div class="spanCornerRight buttonPlay" v-on:click="gotoPage('/play')">
+            <img v-bind:src="'./../src/assets/img/Play_White.svg'" width="60px" height="50px"/>
+          </div>
+        </td>
+      </tr>
+    </table-->
+    <center>
+      <img v-bind:src="'./../src/assets/img/Group 23.svg'" height="300px"/><br/><br/><br/>
+      <div class="buttonPlay" v-on:click="gotoPage('/play')">
+        <img v-bind:src="'./../src/assets/img/Play_White.svg'" width="60px" height="50px"/>
+      </div>
+    </center>
   </div>
 </template>
 <script>
@@ -65,55 +70,21 @@
   .height2{
     line-height: 22.5px;
   }
-
   .main-page {
     padding:30px 30px;
-    /*background-color: linear-gradient(-90deg,#ffcdd2, #fff);*/
-    background: #ffcdd2;
-    background-size: 400% 400%;
-
-    cursor:pointer;
-    max-height: 640px;
-    max-width: 360px;
+    background: #c3cce9;
     height: 640px;
     width: 360px;
+    max-height: 640px;
+    max-width: 360px;
   }
+  /*.logoLove{
+    background-image:url('logo.svg');
+    height: 300px;
+    background-size: cover;
+  }*/
 
-  @-webkit-keyframes Gradient {
-    0% {
-      background-position: 0% 50%
-    }
-    50% {
-      background-position: 100% 50%
-    }
-    100% {
-      background-position: 0% 50%
-    }
-  }
 
-  @-moz-keyframes Gradient {
-    0% {
-      background-position: 0% 50%
-    }
-    50% {
-      background-position: 100% 50%
-    }
-    100% {
-      background-position: 0% 50%
-    }
-  }
-
-  @keyframes Gradient {
-    0% {
-      background-position: 0% 50%
-    }
-    50% {
-      background-position: 100% 50%
-    }
-    100% {
-      background-position: 0% 50%
-    }
-  }
   .title{
     margin-top:100px;
   }
@@ -122,7 +93,7 @@
   }
   .buttonPlay{
     color:#ff6f69;
-    background-color: #ffb69d;
+    background-color: #c43416;
     border-radius:100%;
     border:5px solid #fff;
     padding: 10px 10px;

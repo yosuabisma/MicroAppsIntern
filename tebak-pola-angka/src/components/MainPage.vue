@@ -1,16 +1,18 @@
 <template>
   <div class="main-page">
     <div class="about">
-      <h1 class="white spanCornerRight" v-on:click="gotoPage('/about')">about</h1>
+      <img v-on:click="gotoPage('/about')" class="spanCornerLeft" v-bind:src="'./../src/assets/img/Information_White.svg'" height="30px"/>
     </div>
     <div class="title">
       <br/><br/>
-      <center><img v-bind:src="'./../src/assets/img/logo-tebak-angka.svg'" height="250px"/></center>
+      <center>
+        <img v-bind:src="'./../src/assets/img/Logo_MA_Tebak Angka_new.png'" height="250px"/>
+      </center>
     </div>
     <div class="bottomBtn">
       <center>
         <div class="buttonPlay" v-on:click="gotoPage('/play')">
-          <b>Play</b>
+          <center><img v-bind:src="'./../src/assets/img/Play_White.svg'" width="60px" height="50px"/></center>
         </div>
       </center>
     </div>
@@ -70,8 +72,10 @@
     -moz-animation: Gradient 5s ease infinite;
     animation: Gradient 5s ease infinite;
     cursor:pointer;
-    /*height: 640px;
-    width: 360px;*/
+    height: 640px;
+    width: 360px;
+    max-height: 640px;
+    max-width:360px;
   }
 
   @-webkit-keyframes Gradient {
@@ -113,39 +117,15 @@
     margin-top:100px;
   }
   .bottomBtn{
-    margin-top: 95px;
+    margin-top: 60px;
   }
   .buttonPlay{
-    color:#fff;
-    font-size:48px;
+    color:#ff6f69;
     background-color: #cc2444;
-    border-radius:8px;
+    border-radius:100%;
+    border:5px solid #fff;
     padding: 10px 10px;
-
-    animation-name: stretch;
-    animation-duration: 0.6s;
-    animation-timing-function: ease-out;
-    animation-delay: 0;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-    animation-fill-mode: none;
-    animation-play-state: running;
-  }
-  .buttonPlay:hover{
-    background-color: #ff2d55;
-  }
-
-  @keyframes stretch {
-    0% {
-      transform: scale(.8);
-      background-color: #cc2444;
-    }
-    50% {
-      background-color: #cc2444;
-    }
-    100% {
-      transform: scale(1);
-      background-color: #ff2d55;
-    }
+    width: 80px;
+    height: 80px;
   }
 </style>

@@ -16,7 +16,7 @@
         <div v-if="bantuan<=3&&bantuan>=0">
           <div class="btnPetunjuk" v-on:click="bantuan-=1;showBantu=true;">
             <h6>Tampilkan Petunjuk ({{bantuan}} Kesempatan)</h6>
-            <div class="yellow" v-if="showBantu===true">
+            <div class="white" v-if="showBantu===true">
               <h4>{{questions[randomIndex].petunjuk}}</h4>
             </div>
           </div>
